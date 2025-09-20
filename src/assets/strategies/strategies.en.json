@@ -1,0 +1,421 @@
+{
+  "_comment": "DO NOT EDIT AFTER RELEASE - Fallback strategies only. Primary source: PocketBase 'strategies' collection",
+  "version": "1.0.0",
+  "lastUpdated": "2024-05-20",
+  "strategies": [
+    {
+      "id": "1",
+      "title": "Single Candidate",
+      "description": "When a cell can only contain one possible number because all other numbers are already present in its row, column, or 3x3 box.",
+      "difficulty": "Easy",
+      "category": "Basic",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Imagine a row with numbers 1-8 already present - the empty cell must be 9"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Single Position",
+      "description": "When a number can only go in one specific cell within a row, column, or box because all other positions are already occupied.",
+      "difficulty": "Easy",
+      "category": "Basic",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If a 3x3 box has numbers 1-8 except for 9, and only one cell is empty, that cell must be 9"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Row/Column Check",
+      "description": "Eliminate candidates by checking which numbers are already present in the row and column.",
+      "difficulty": "Easy",
+      "category": "Basic",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If a cell's row has 1,2,3 and column has 4,5, the possible numbers are 6-9"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Box Line Reduction",
+      "description": "When all possible positions for a number in a box are in one row/column, eliminate that number from the rest of the row/column outside the box.",
+      "difficulty": "Easy",
+      "category": "Basic",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If in a box, number 5 can only go in the middle row, remove 5 from that row in other boxes"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Obvious Pairs",
+      "description": "When two cells in a unit have the same two candidates, those numbers can be eliminated from other cells in the unit.",
+      "difficulty": "Easy",
+      "category": "Basic",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If two cells in a column can only be 2 or 3, remove 2 and 3 from other cells in that column"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Pointing Pairs",
+      "description": "When two possible positions for a number in a box align in a row/column, eliminate that number from the rest of the row/column.",
+      "difficulty": "Easy",
+      "category": "Basic",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If in a box, 7 can only go in two cells in the same column, remove 7 from that column in other boxes"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Last Remaining Cell",
+      "description": "When all but one number have been placed in a row, column, or box, the last remaining number must go in the empty cell.",
+      "difficulty": "Easy",
+      "category": "Basic",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If a row has numbers 1-8 with one empty cell, that cell must be 9"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Candidate Highlighting",
+      "description": "Systematically eliminate impossible candidates by visually marking possible numbers in empty cells.",
+      "difficulty": "Easy",
+      "category": "Basic",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Mark all possible numbers for a cell based on its row, column, and box",
+        "When only one number remains unmarked, it must be the solution"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Cross-Hatching",
+      "description": "Methodically scan each box while checking against its row and column constraints.",
+      "difficulty": "Easy",
+      "category": "Basic",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Focus on one box at a time, checking which numbers are missing",
+        "For each missing number, check rows/columns to find possible positions"
+      ]
+    },
+
+
+
+
+
+
+
+    {
+      "id": "10",
+      "title": "Candidate Lines",
+      "description": "When a number's possible positions within a block are all in the same row or column, eliminating it from that row/column in other blocks.",
+      "difficulty": "Medium",
+      "category": "Intermediate",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If in a 3x3 box, 5 can only be in the top row, remove 5 from the rest of that row in other boxes"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Naked Pairs",
+      "description": "When two cells in a unit contain the exact same two possible numbers, eliminating those numbers from other cells in the unit.",
+      "difficulty": "Medium",
+      "category": "Intermediate",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If two cells in a row can only be 3 or 7, remove 3 and 7 from other cells in that row"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Naked Triples",
+      "description": "When three cells in a unit contain only the same three possible numbers, eliminating those numbers from other cells in the unit.",
+      "difficulty": "Medium",
+      "category": "Intermediate",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If three cells in a column can only be 4,5,6 in some combination, remove these numbers from other cells in the column"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Hidden Triples",
+      "description": "When three numbers appear only in three cells of a unit, eliminating other candidates from those cells.",
+      "difficulty": "Medium",
+      "category": "Intermediate",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If numbers 2,4,6 appear only in three cells of a box, those cells must contain these numbers"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "X-Wing (Basic)",
+      "description": "When a number appears in exactly two rows and two columns forming a rectangle, eliminating it from those rows/columns outside the rectangle.",
+      "difficulty": "Medium",
+      "category": "Intermediate",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If 7 appears only in rows 2 and 5 at columns 3 and 7, remove other 7s in those columns"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Simple Coloring",
+      "description": "Using two colors to track possibilities for a number to find contradictions or certain placements.",
+      "difficulty": "Medium",
+      "category": "Intermediate",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If all possible 5s are connected in a chain where colors alternate, you can eliminate possibilities that would force two 5s in the same unit"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Y-Wing",
+      "description": "A technique using three cells connected like a pivot and two pincers to eliminate candidates.",
+      "difficulty": "Medium",
+      "category": "Intermediate",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If cell A (3,5) connects to B (3,7) and C (5,7), any cell seeing both B and C cannot be 7"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Skyscraper",
+      "description": "Two strong links for a candidate that share a common row or column, allowing eliminations.",
+      "difficulty": "Medium",
+      "category": "Intermediate",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If candidate 5 appears twice in a column and forms a 'skyscraper' shape with another column",
+        "Can eliminate 5s from cells visible to both 'towers' of the skyscraper"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Two-String Kite",
+      "description": "A number that connects a row and column through a shared box, creating elimination opportunities.",
+      "difficulty": "Medium",
+      "category": "Intermediate",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "When a candidate in a row connects to a candidate in a column via a shared box",
+        "Eliminate the candidate from the intersection cell"
+      ]
+    },
+
+
+
+
+
+
+
+
+    {
+      "id": "19",
+      "title": "Hidden Pairs",
+      "description": "When two numbers only appear in the same two cells of a unit, eliminating other candidates from those cells.",
+      "difficulty": "Hard",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If in a column, numbers 4 and 5 only appear in two cells together, those cells must contain 4 and 5"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "X-Wing",
+      "description": "When a number appears in exactly two rows and two columns forming a rectangle, eliminating it from those rows/columns outside the rectangle.",
+      "difficulty": "Extreme",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If 7 appears only in rows 2 and 5 at columns 3 and 7, remove other 7s in those columns"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Swordfish",
+      "description": "An advanced version of X-Wing using three rows and columns instead of two.",
+      "difficulty": "Hard",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If number 3 appears in three rows and exactly three columns, aligned in a specific pattern, you can eliminate other 3s in those columns"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "XYZ-Wing",
+      "description": "An extension of Y-Wing using three cells where the pivot contains three candidates.",
+      "difficulty": "Hard",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If cell A (4,5,6) connects to B (4,7) and C (5,7), any cell seeing all three cannot be 7"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "W-Wing",
+      "description": "A technique using two cells with the same two candidates connected through a strong link.",
+      "difficulty": "Hard",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If two cells (1,9) are connected through a chain of 1s, one of them must be 9"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Jellyfish",
+      "description": "An advanced pattern similar to Swordfish but using four rows and columns.",
+      "difficulty": "Extreme",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "When a number appears in four rows and exactly four columns in a specific alignment, allowing eliminations"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Unique Rectangle",
+      "description": "A pattern that prevents multiple solutions by forcing certain placements.",
+      "difficulty": "Extreme",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "If four cells form a rectangle with the same two candidates, additional constraints must apply to prevent multiple solutions"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "XY-Chain",
+      "description": "A chain of connected cells where each link shares a candidate with the next, allowing endpoint eliminations.",
+      "difficulty": "Hard",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "4-6 → 6-9 → 9-2 → 2-7 chain means either end must be 4 or 7",
+        "Eliminate candidates visible to both ends of the chain"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "ALS-XZ",
+      "description": "Two Almost Locked Sets that share restricted candidates, enabling advanced eliminations.",
+      "difficulty": "Hard",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "When two groups of cells share exactly one candidate",
+        "That shared candidate can be eliminated from visible cells"
+      ]
+    },
+    {
+      "id": "28",
+      "title": "Death Blossom",
+      "description": "An advanced pattern using a stem cell connected to multiple ALS petals.",
+      "difficulty": "Hard",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "A central cell connected to three ALS groups",
+        "Eliminations occur based on shared constraints"
+      ]
+    },
+
+
+
+
+
+
+    
+    {
+      "id": "35",
+      "title": "Digit Forcing Chain",
+      "description": "Tests candidate placements to find contradictions or verifications across multiple cells.",
+      "difficulty": "Extreme",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Assume a candidate is true and follow implications",
+        "If it leads to contradiction, the candidate must be false"
+      ]
+    },
+    {
+      "id": "36",
+      "title": "Multi-Coloring",
+      "description": "Extended coloring with multiple colors to track complex candidate interactions.",
+      "difficulty": "Extreme",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Using 4+ colors to track candidate dependencies",
+        "Find eliminations where colors conflict"
+      ]
+    },
+    {
+      "id": "37",
+      "title": "Pattern Overlay",
+      "description": "Superimposes candidate patterns to identify unavoidable eliminations.",
+      "difficulty": "Extreme",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Map all possible positions for a candidate",
+        "Find cells where the candidate must be eliminated"
+      ]
+    }
+  ],
+  "meta": {
+    "strategyCount": 27,
+    "difficultyDistribution": {
+      "Easy": 9,
+      "Medium": 9,
+      "Hard": 9,
+      "Extreme": 3
+    },
+    "lastUpdated": "2024-05-20"
+  }
+}

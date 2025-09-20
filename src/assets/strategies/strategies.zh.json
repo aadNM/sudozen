@@ -1,0 +1,481 @@
+{
+  "_comment": "发布后请勿编辑 - 仅限后备策略。主要来源：PocketBase '策略' 集合",
+  "version": "1.0.0",
+  "lastUpdated": "2024-05-20",
+  "strategies": [
+    {
+      "id": "1",
+      "title": "唯一候选数",
+      "description": "当一个单元格只能包含一个可能的数字时，因为其他所有数字都已经存在于其行、列或3x3宫内。",
+      "difficulty": "简单",
+      "category": "基础",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "想象一行已经有数字1-8 - 空单元格必须是9"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "唯一位置",
+      "description": "当一个数字在行、列或宫内只能放在一个特定单元格时，因为其他所有位置都已被占用。",
+      "difficulty": "简单",
+      "category": "基础",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果一个3x3宫有数字1-8除了9，只有一个单元格是空的，那个单元格必须是9"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "行/列检查",
+      "description": "通过检查行和列中已经存在的数字来排除候选数。",
+      "difficulty": "简单",
+      "category": "基础",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果单元格的行有1,2,3，列有4,5，可能的数字是6-9"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "宫行列削减",
+      "description": "当宫内数字的所有可能位置都在同一行/列时，从该行/列在宫外的其余部分中排除该数字。",
+      "difficulty": "简单",
+      "category": "基础",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果在一个宫中，数字5只能放在中间行，从其他宫的该行中移除5"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "显式数对",
+      "description": "当单位中的两个单元格有相同的两个候选数时，这些数字可以从单位中的其他单元格中排除。",
+      "difficulty": "简单",
+      "category": "基础",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果列中的两个单元格只能是2或3，从该列的其他单元格中移除2和3"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "指向数对",
+      "description": "当宫中数字的两个可能位置在同一行/列对齐时，从该行/列的其余部分排除该数字。",
+      "difficulty": "简单",
+      "category": "基础",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果在一个宫中，7只能在同一列的两个单元格中，从其他宫的该列中移除7"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "最后剩余单元格",
+      "description": "当行、列或宫中除了一个数字外都已放置时，最后剩余的数字必须放在空单元格中。",
+      "difficulty": "简单",
+      "category": "基础",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果一行有数字1-8和一个空单元格，该单元格必须是9"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "候选数高亮",
+      "description": "通过在空单元格中视觉标记可能数字来系统地排除不可能的候选数。",
+      "difficulty": "简单",
+      "category": "基础",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "根据单元格的行、列和宫标记所有可能的数字",
+        "当只剩一个数字未标记时，它必须是解"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "十字检查",
+      "description": "有条不紊地扫描每个宫，同时检查其行和列约束。",
+      "difficulty": "简单",
+      "category": "基础",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "一次专注于一个宫，检查缺少哪些数字",
+        "对于每个缺少的数字，检查行/列以找到可能位置"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "候选行",
+      "description": "当宫内数字的可能位置都在同一行或列时，从其他宫的该行/列中排除它。",
+      "difficulty": "中等",
+      "category": "中级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果在3x3宫中，5只能在顶行，从其他宫的该行其余部分移除5"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "显式数对",
+      "description": "当单位中的两个单元格包含完全相同的两个可能数字时，从单位中的其他单元格排除这些数字。",
+      "difficulty": "中等",
+      "category": "中级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果行中的两个单元格只能是3或7，从该行的其他单元格中移除3和7"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "显式三元组",
+      "description": "当单位中的三个单元格只包含相同的三个可能数字时，从单位中的其他单元格排除这些数字。",
+      "difficulty": "中等",
+      "category": "中级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果列中的三个单元格只能是4,5,6的某种组合，从列中的其他单元格移除这些数字"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "隐式三元组",
+      "description": "当三个数字只出现在单位的三个单元格中时，从这些单元格中排除其他候选数。",
+      "difficulty": "中等",
+      "category": "中级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果数字2,4,6只出现在宫的三个单元格中，这些单元格必须包含这些数字"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "X翼（基础）",
+      "description": "当一个数字恰好出现在两行两列形成矩形时，从矩形外的那些行/列中排除它。",
+      "difficulty": "中等",
+      "category": "中级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果7只出现在第2行和第5行的第3列和第7列，移除这些列中的其他7"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "简单着色",
+      "description": "使用两种颜色跟踪数字的可能性以找到矛盾或确定位置。",
+      "difficulty": "中等",
+      "category": "中级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果所有可能的5都连接在颜色交替的链中，你可以排除会强制同一单位中有两个5的可能性"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Y翼",
+      "description": "使用像支点和两个钳子连接的三个单元格来排除候选数的技术。",
+      "difficulty": "中等",
+      "category": "中级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果单元格A (3,5)连接到B (3,7)和C (5,7)，任何能看到B和C的单元格不能是7"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "摩天大楼",
+      "description": "候选数的两个强链接共享一个公共行或列，允许排除。",
+      "difficulty": "中等",
+      "category": "中级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果候选数5在一列中出现两次并与另一列形成'摩天大楼'形状",
+        "可以从能看到摩天大楼两个'塔'的单元格中排除5"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "双线风筝",
+      "description": "通过共享宫连接行和列的数字，创造排除机会。",
+      "difficulty": "中等",
+      "category": "中级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "当行中的候选数通过共享宫连接到列中的候选数时",
+        "从交叉单元格中排除该候选数"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "隐式数对",
+      "description": "当两个数字只出现在单位的相同两个单元格中时，从这些单元格中排除其他候选数。",
+      "difficulty": "困难",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果在列中，数字4和5只一起出现在两个单元格中，这些单元格必须包含4和5"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "X翼",
+      "description": "当一个数字恰好出现在两行两列形成矩形时，从矩形外的那些行/列中排除它。",
+      "difficulty": "极端",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果7只出现在第2行和第5行的第3列和第7列，移除这些列中的其他7"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "剑鱼",
+      "description": "X翼的高级版本，使用三行三列而不是两行两列。",
+      "difficulty": "困难",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果数字3出现在三行和恰好三列中，以特定模式对齐，你可以排除这些列中的其他3"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "XYZ翼",
+      "description": "Y翼的扩展，使用三个单元格，其中支点包含三个候选数。",
+      "difficulty": "困难",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果单元格A (4,5,6)连接到B (4,7)和C (5,7)，任何能看到全部三个的单元格不能是7"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "W翼",
+      "description": "使用通过强链接连接的具有相同两个候选数的两个单元格的技术。",
+      "difficulty": "困难",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果两个单元格(1,9)通过1的链连接，其中一个必须是9"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "水母",
+      "description": "类似剑鱼的高级模式，但使用四行四列。",
+      "difficulty": "极端",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "当一个数字出现在四行和恰好四列的特定对齐中时，允许排除"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "唯一矩形",
+      "description": "通过强制某些放置来防止多重解的模式。",
+      "difficulty": "极端",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果四个单元格形成具有相同两个候选数的矩形，必须应用额外约束以防止多重解"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "XY链",
+      "description": "连接单元格的链，其中每个链接与下一个共享一个候选数，允许端点排除。",
+      "difficulty": "困难",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "4-6 → 6-9 → 9-2 → 2-7 链意味着任一端必须是4或7",
+        "排除链两端可见的候选数"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "ALS-XZ",
+      "description": "两个几乎锁定集共享受限候选数，实现高级排除。",
+      "difficulty": "困难",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "当两组单元格恰好共享一个候选数时",
+        "该共享候选数可以从可见单元格中排除"
+      ]
+    },
+    {
+      "id": "28",
+      "title": "死亡花",
+      "description": "使用连接到多个ALS花瓣的茎单元格的高级模式。",
+      "difficulty": "困难",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "连接到三个ALS组的中心单元格",
+        "根据共享约束进行排除"
+      ]
+    },
+    {
+      "id": "29",
+      "title": "空矩形",
+      "description": "利用数字在宫内的特定位置模式，结合行和列的约束来进行候选数排除的技术。",
+      "difficulty": "困难",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "当数字在宫内的可能位置形成特定模式时，可以排除行或列中的其他候选数",
+        "结合强链接和弱链接来识别排除机会"
+      ]
+    },
+    {
+      "id": "30",
+      "title": "远程数对",
+      "description": "两个单元格通过一系列强链接连接，即使它们不在同一单位中，也能进行候选数排除。",
+      "difficulty": "困难",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "如果两个单元格(3,7)通过强链接链连接，它们不能同时为相同的数字",
+        "可以从能看到这两个单元格的其他单元格中排除相关候选数"
+      ]
+    },
+    {
+      "id": "31",
+      "title": "ALS-XY翼",
+      "description": "结合几乎锁定集(ALS)和XY翼技术的混合方法，用于复杂的候选数排除。",
+      "difficulty": "极端",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "使用ALS来扩展XY翼的适用范围",
+        "通过共享候选数连接不同的ALS组来进行排除"
+      ]
+    },
+    {
+      "id": "32",
+      "title": "死亡花环",
+      "description": "多个死亡花模式相互连接形成的复杂排除结构。",
+      "difficulty": "极端",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "多个中心单元格通过ALS花瓣相互连接",
+        "形成复杂的约束网络来进行高级排除"
+      ]
+    },
+    {
+      "id": "33",
+      "title": "区域强制链",
+      "description": "测试整个区域或单位的候选数配置来找到矛盾或确定位置。",
+      "difficulty": "极端",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "假设某个区域的特定配置并跟踪对整个谜题的影响",
+        "如果导致矛盾，该配置必须被排除"
+      ]
+    },
+    {
+      "id": "34",
+      "title": "模板删除",
+      "description": "为每个数字创建所有可能位置的模板，然后删除不符合所有数字约束的候选数。",
+      "difficulty": "极端",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "为数字1-9分别创建所有可能位置的覆盖图",
+        "找到与所有模板都不兼容的候选数位置并进行排除"
+      ]
+    },
+    {
+      "id": "35",
+      "title": "数字强制链",
+      "description": "测试候选数位置以在多个单元格中找到矛盾或验证。",
+      "difficulty": "极端",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "假设候选数为真并跟踪含义",
+        "如果导致矛盾，候选数必须为假"
+      ]
+    },
+    {
+      "id": "36",
+      "title": "多重着色",
+      "description": "使用多种颜色的扩展着色来跟踪复杂的候选数交互。",
+      "difficulty": "极端",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "使用4+种颜色跟踪候选数依赖关系",
+        "找到颜色冲突的排除"
+      ]
+    },
+    {
+      "id": "37",
+      "title": "模式叠加",
+      "description": "叠加候选数模式以识别不可避免的排除。",
+      "difficulty": "极端",
+      "category": "高级",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "映射候选数的所有可能位置",
+        "找到必须排除候选数的单元格"
+      ]
+    }
+  ],
+  "meta": {
+    "language": "zh",
+    "translatedBy": "Claude",
+    "translationDate": "2024-12-19",
+    "notes": "翻译已完成，保持JSON结构不变；所有描述都使用标准中文。",
+    "strategyCount": 27,
+    "difficultyDistribution": {
+      "Easy": 9,
+      "Medium": 9,
+      "Hard": 9,
+      "Extreme": 3
+    },
+    "lastUpdated": "2024-05-20"
+  }
+}

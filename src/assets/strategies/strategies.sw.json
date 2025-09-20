@@ -1,0 +1,462 @@
+{
+  "_comment": "USIBADILISHE BAADA YA KUTOLEWA - Mikakati ya akiba pekee. Chanzo kikuu: mkusanyiko wa 'strategies' wa PocketBase",
+  "version": "1.0.0",
+  "lastUpdated": "2024-05-20",
+  "strategies": [
+    {
+      "id": "1",
+      "title": "Mgombea Mmoja",
+      "description": "Wakati seli inaweza kuwa na namba moja pekee kwa sababu namba zingine zote tayari zipo kwenye safu yake, safu wima, au kisanduku cha 3x3.",
+      "difficulty": "Rahisi",
+      "category": "Msingi",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Fikiria safu yenye namba 1-8 tayari zipo - seli tupu lazima iwe 9"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Nafasi Moja",
+      "description": "Wakati namba inaweza kuwekwa tu kwenye seli moja maalum ndani ya safu, safu wima, au kisanduku kwa sababu nafasi nyingine zote tayari zimejazwa.",
+      "difficulty": "Rahisi",
+      "category": "Msingi",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama kisanduku cha 3x3 kina namba 1-8 isipokuwa 9, na seli moja pekee tupu, seli hiyo lazima iwe 9"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Ukaguzi wa Safu/Safu Wima",
+      "description": "Ondoa wagombea kwa kuangalia namba zipi tayari zipo kwenye safu na safu wima.",
+      "difficulty": "Rahisi",
+      "category": "Msingi",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama safu ya seli ina 1,2,3 na safu wima ina 4,5, namba zinazowezekana ni 6-9"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Kupunguza Mstari wa Kisanduku",
+      "description": "Wakati nafasi zote zinazowezekana za namba ndani ya kisanduku ziko kwenye safu moja/safu wima, ondoa namba hiyo kwenye sehemu nyingine za safu/safu wima nje ya kisanduku.",
+      "difficulty": "Rahisi",
+      "category": "Msingi",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama kwenye kisanduku, namba 5 inaweza kuwekwa tu kwenye safu ya katikati, ondoa 5 kutoka kwenye safu hiyo katika visanduku vingine"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Jozi Dhahiri",
+      "description": "Wakati seli mbili kwenye kitengo zina wagombea wawili sawa, namba hizo zinaweza kuondolewa kutoka kwenye seli zingine kwenye kitengo hicho.",
+      "difficulty": "Rahisi",
+      "category": "Msingi",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama seli mbili kwenye safu wima zinaweza kuwa 2 au 3 pekee, ondoa 2 na 3 kutoka seli zingine kwenye safu wima hiyo"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Jozi Zinazoelekeza",
+      "description": "Wakati nafasi mbili zinazowezekana za namba kwenye kisanduku zinaambatana kwenye safu moja/safu wima, ondoa namba hiyo kwenye sehemu nyingine za safu/safu wima.",
+      "difficulty": "Rahisi",
+      "category": "Msingi",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama kwenye kisanduku, 7 inaweza kuwekwa tu kwenye seli mbili kwenye safu wima moja, ondoa 7 kwenye safu wima hiyo katika visanduku vingine"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Seli Iliyosalia ya Mwisho",
+      "description": "Wakati namba zote isipokuwa moja zimewekwa kwenye safu, safu wima, au kisanduku, namba iliyosalia lazima iwe kwenye seli tupu.",
+      "difficulty": "Rahisi",
+      "category": "Msingi",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama safu ina namba 1-8 na seli moja tupu, seli hiyo lazima iwe 9"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Kusisitiza Wagombea",
+      "description": "Ondoa wagombea wasio wezekana kwa utaratibu kwa kuweka alama ya kuona kwa namba zinazowezekana kwenye seli tupu.",
+      "difficulty": "Rahisi",
+      "category": "Msingi",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Weka alama kwa namba zote zinazowezekana kwenye seli kulingana na safu yake, safu wima, na kisanduku",
+        "Wakati namba moja pekee imebaki bila alama, hiyo lazima iwe suluhisho"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Uchanganua kwa Mstari",
+      "description": "Changanua kila kisanduku kwa utaratibu huku ukikagua masharti ya safu na safu wima.",
+      "difficulty": "Rahisi",
+      "category": "Msingi",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Lenga kwenye kisanduku kimoja kwa wakati mmoja, ukikagua ni namba zipi zinakosekana",
+        "Kwa kila namba inayokosekana, kagua safu/safu wima kupata nafasi zinazowezekana"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Mistari ya Mgombea",
+      "description": "Wakati nafasi zinazowezekana za namba ndani ya kizuizi ziko kwenye safu moja au safu wima, ondoa kwenye safu/safu wima hiyo katika vizuizi vingine.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama kwenye kisanduku cha 3x3, 5 inaweza kuwa tu kwenye safu ya juu, ondoa 5 kwenye sehemu nyingine za safu hiyo katika visanduku vingine"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Jozi Wazi",
+      "description": "Wakati seli mbili kwenye kitengo zina namba mbili zinazowezekana sawa, ondoa namba hizo kutoka kwenye seli zingine kwenye kitengo hicho.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama seli mbili kwenye safu zinaweza kuwa 3 au 7 pekee, ondoa 3 na 7 kutoka seli zingine kwenye safu hiyo"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Tatu Wazi",
+      "description": "Wakati seli tatu kwenye kitengo zina namba tatu sawa zinazowezekana pekee, ondoa namba hizo kwenye seli zingine kwenye kitengo hicho.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama seli tatu kwenye safu wima zinaweza kuwa 4,5,6 kwa mpangilio wowote, ondoa namba hizi kutoka seli zingine kwenye safu wima hiyo"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Tatu Zilizofichwa",
+      "description": "Wakati namba tatu zinaonekana tu kwenye seli tatu za kitengo, ondoa wagombea wengine kwenye seli hizo.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama namba 2,4,6 zinaonekana tu kwenye seli tatu za kisanduku, seli hizo lazima ziwe na namba hizi"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "X-Wing (Msingi)",
+      "description": "Wakati namba inaonekana kwenye safu mbili na safu wima mbili tu ikitengeneza mstatili, ondoa kwenye safu/safu wima hizo nje ya mstatili.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama 7 inaonekana tu kwenye safu 2 na 5 katika safu wima 3 na 7, ondoa 7 zingine kwenye safu wima hizo"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Upakaji Rangi Rahisi",
+      "description": "Kutumia rangi mbili kufuatilia uwezekano wa namba kupata migongano au uwekaji wa uhakika.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama uwezekano wote wa 5 umeunganishwa kwenye mlolongo ambapo rangi hubadilishana, unaweza kuondoa uwezekano unaolazimisha 5 mbili kwenye kitengo kimoja"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Y-Wing",
+      "description": "Mbinu inayotumia seli tatu zilizounganishwa kama mhimili na pande mbili kuondoa wagombea.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama seli A (3,5) inaunganishwa na B (3,7) na C (5,7), seli yoyote inayoona B na C haiwezi kuwa 7"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Jengo Refu",
+      "description": "Viungo viwili vikali kwa mgombea vinavyoshiriki safu au safu wima ya kawaida, kuruhusu kuondolewa.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama mgombea 5 anaonekana mara mbili kwenye safu wima na kutengeneza umbo la 'jengo refu' na safu wima nyingine",
+        "Ondoa 5 kwenye seli zinazoonekana kwenye minara yote miwili"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Kite yenye Kamba Mbili",
+      "description": "Namba inayounganisha safu na safu wima kupitia kisanduku kinachoshirikiwa, ikitoa nafasi ya kuondoa.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Wakati mgombea kwenye safu unaunganishwa na mgombea kwenye safu wima kupitia kisanduku kinachoshirikiwa",
+        "Ondoa mgombea kwenye seli ya makutano"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Viungo vya Kuweka Namba",
+      "description": "Mlolongo wa viungo vinavyobadilisha kati ya nguvu na dhaifu ili kubaini mahali pa kuweka namba au kuondoa wagombea.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Tumia mlolongo wa viungo kufuatilia uwezekano na kubaini migongano",
+        "Ikiwa mlolongo unalazimisha mgombea kuwepo mara mbili kwenye kitengo kimoja, unaweza kuondoa"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "X-Wing (Tata)",
+      "description": "Toleo tata linalojumuisha mistari zaidi ya mstatili rahisi, mara nyingi kwenye gridi kubwa au yenye muundo maalum.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Tofauti ya msingi wa X-Wing lakini yenye gridi zenye mpangilio maalum au zaidi ya 4 seli"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Faneli",
+      "description": "Mfumo wa wagombea unaoelekeza chaguo kwenye njia nyembamba, ukilazimisha kuweka namba fulani.",
+      "difficulty": "Kati",
+      "category": "Wastani",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Chaguo zote zinaishia kwenye mgombea mmoja kwenye seli fulani, hivyo inalazimisha uwekaji wake"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "Samaki wa 3D",
+      "description": "Mfumo wa samaki (X-Wing, Swordfish, Jellyfish) uliopanuliwa kwenye mwelekeo wa tatu, mara nyingi kwenye Sudoku isiyo ya kawaida.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama Swordfish lakini kwenye gridi zisizo za kawaida au zinazogawanyika"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "Swordfish",
+      "description": "Toleo kubwa la X-Wing likitumia safu tatu na safu wima tatu.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama 4 inaweza kuwekwa tu kwenye safu 1, 5, na 9 katika safu wima 2, 6, na 8"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Jellyfish",
+      "description": "Toleo kubwa zaidi la samaki likitumia safu nne na safu wima nne.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama 7 inaonekana kwenye safu 1, 3, 5, na 7 katika safu wima 2, 4, 6, na 8 pekee"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Ukiukaji wa Uwezekano",
+      "description": "Kutumia mlolongo wa viungo kufichua uwezekano wa mgombea kusababisha migongano.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Iwapo kuweka mgombea kutaongeza uwepo wake mara mbili kwenye kitengo, ondoa mgombea huyo"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "Uchambuzi wa Viungo vya Nguvu",
+      "description": "Kuchanganua mtandao wa viungo vya nguvu ili kupata uwekaji wa lazima au kuondoa wagombea.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Tumia viungo vya nguvu vinavyojipanga ili kuhakikisha namba lazima iwe kwenye seli fulani"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "Mnyororo wa Forcing",
+      "description": "Mbinu ya hali ya juu inayotumia minyororo inayobadilisha kati ya viungo vya nguvu na dhaifu ili kufikia suluhisho.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama minyororo yote inayoanza na mgombea fulani inapelekea kuwepo kwake, mgombea huyo lazima awe sahihi"
+      ]
+    },
+    {
+      "id": "28",
+      "title": "Viungo vya Multi-Color",
+      "description": "Toleo la rangi rahisi lakini na rangi nyingi, kuruhusu kuondoa zaidi au kuweka namba.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kutumia rangi tatu au zaidi kufuatilia wagombea wa mgombea mmoja"
+      ]
+    },
+    {
+      "id": "29",
+      "title": "Viungo vya Mtandao",
+      "description": "Kutumia mtandao mkubwa wa viungo kufuatilia uwezekano na kufichua migongano.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama mtandao unalazimisha mgombea kuwepo mara mbili kwenye kitengo, ondoa mgombea huyo"
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Nodding Cycle",
+      "description": "Mzunguko wa viungo ambapo uwepo wa mgombea katika sehemu fulani hupelekea migongano, ikiruhusu kuondoa.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama kuweka mgombea husababisha kurudi kwenye hali isiyo ya kawaida, mgombea huyo huondolewa"
+      ]
+    },
+    {
+      "id": "31",
+      "title": "Mnyororo wa Kusawazisha",
+      "description": "Kutumia mnyororo wa viungo kusawazisha uwekaji wa mgombea na kuondoa uwezekano usio sahihi.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Minyororo yote ikipeleka kwenye mgombea fulani inaonyesha kuwa lazima awe sahihi"
+      ]
+    },
+    {
+      "id": "32",
+      "title": "Ukaguzi wa Uwepo wa Namba",
+      "description": "Kuchunguza uwepo wa namba kwenye maeneo mengi ili kubaini uwekaji wa lazima au kuondoa.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama namba inaonekana mara mbili tu kwenye maeneo yote, uwekaji wake unaweza kubainika"
+      ]
+    },
+    {
+      "id": "33",
+      "title": "Mnyororo wa Mgombea",
+      "description": "Kuchanganua minyororo inayojumuisha wagombea mbalimbali ili kubaini migongano au uwekaji wa lazima.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Minyororo inayounganisha wagombea tofauti inaweza kuondoa chaguo kwenye seli fulani"
+      ]
+    },
+    {
+      "id": "34",
+      "title": "Jumla ya Viungo vya Nguvu",
+      "description": "Kuchanganua viungo vya nguvu vinavyotokana na wagombea wengi kwa pamoja.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kutumia viungo vya nguvu vilivyotokana na mgombea zaidi ya mmoja kupata suluhisho"
+      ]
+    },
+    {
+      "id": "35",
+      "title": "Upunguzaji wa Gridi",
+      "description": "Kupunguza gridi kwa hatua hadi suluhisho liwe wazi.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kuweka alama na kuondoa hatua kwa hatua hadi suluhisho lipatikane"
+      ]
+    },
+    {
+      "id": "36",
+      "title": "Kuondoa Uchanganyaji",
+      "description": "Kuondoa uwezekano wa namba kugongana kwa kuzingatia masharti ya gridi.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Kama kuwepo kwa namba fulani kutaweka nyingine katika mgongano, ondoa uwezekano huo"
+      ]
+    },
+    {
+      "id": "37",
+      "title": "Mbinu ya Ubunifu",
+      "description": "Mbinu yoyote isiyo ya kawaida au mchanganyiko wa mbinu zilizopo ili kufikia suluhisho.",
+      "difficulty": "Ngumu",
+      "category": "Juu",
+      "is_hint": false,
+      "is_tutorial": false,
+      "examples": [
+        "Mchanganyiko wa mbinu nyingi kwa njia isiyo ya kawaida"
+      ]
+    }
+  ],
+  "meta": {
+    "language": "sw",
+    "translatedBy": "ChatGPT",
+    "translationDate": "2025-08-12",
+    "notes": "Tafsiri imefanywa bila kubadilisha muundo wa JSON; maelezo yote yamewekwa kwa Kiswahili sanifu."
+  }
+}

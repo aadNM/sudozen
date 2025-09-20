@@ -1,0 +1,459 @@
+{
+  "_comment": "KADA A GYARA BAYAN SAKO - Tsare-tsaren da za a koma ga su kawai. Asalin tushen: Tarin 'strategies' na PocketBase",
+  "version": "1.0.0",
+  "lastUpdated": "2024-05-20",
+  "strategies": [
+    {
+      "id": "1",
+      "title": "Dan Takara Daya",
+      "description": "Lokacin da wani sel zai iya daukar lamba daya kawai saboda sauran lambobin sun riga sun kasance a cikin layi, ginshiƙi, ko akwatin 3x3.",
+      "difficulty": "Mai Sauƙi",
+      "category": "Asali",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Ka yi tunanin layi wanda lambobi 1-8 suka riga sun kasance - sel ɗin da babu komai dole ne ya zama 9"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Matsayi Daya",
+      "description": "Lokacin da lamba za ta iya zuwa wani sel ɗaya kawai a cikin layi, ginshiƙi, ko akwatin saboda sauran wuraren sun riga sun cika.",
+      "difficulty": "Mai Sauƙi",
+      "category": "Asali",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan akwatin 3x3 yana da lambobi 1-8 sai dai 9, kuma sel ɗaya kawai babu komai, wannan sel ɗin dole ne ya zama 9"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Duban Layi/Ginshiƙi",
+      "description": "Cire 'yan takara ta hanyar duba waɗanne lambobi suka riga sun kasance a cikin layi da ginshiƙi.",
+      "difficulty": "Mai Sauƙi",
+      "category": "Asali",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan layin sel ɗin yana da 1,2,3 kuma ginshiƙi yana da 4,5, lambobin da za su iya zama sune 6-9"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Rage Layin Akwatin",
+      "description": "Lokacin da duk wuraren da lamba za ta iya kasancewa a akwatin suna cikin layi ko ginshiƙi guda, cire wannan lambar daga sauran layin/ginshiƙin a wajen akwatin.",
+      "difficulty": "Mai Sauƙi",
+      "category": "Asali",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan a cikin akwatin, lamba 5 tana iya zuwa ne kawai a tsakiyar layi, cire 5 daga wannan layin a sauran akwatuna"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Matsakaicin Kwanci",
+      "description": "Lokacin da sel biyu a cikin rukuni suna da 'yan takara biyu iri ɗaya, waɗannan lambobin za a iya cire su daga sauran sel ɗin a cikin rukuni.",
+      "difficulty": "Mai Sauƙi",
+      "category": "Asali",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan sel biyu a ginshiƙi na iya zama 2 ko 3 kawai, cire 2 da 3 daga sauran sel ɗin a wannan ginshiƙi"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Ma'aurata Mai Nunawa",
+      "description": "Lokacin da wurare biyu masu yiwuwar lamba a cikin akwatin suka daidaita a cikin layi ko ginshiƙi, cire wannan lambar daga sauran layi/ginshiƙin.",
+      "difficulty": "Mai Sauƙi",
+      "category": "Asali",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan a cikin akwatin, 7 zai iya zuwa ne kawai a sel biyu a cikin ginshiƙi guda, cire 7 daga wannan ginshiƙin a sauran akwatuna"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Sel ɗin Ƙarshe Mai Wanzuwa",
+      "description": "Lokacin da duk lambobi amma ɗaya suka riga sun kasance a cikin layi, ginshiƙi, ko akwatin, lambar da ta rage dole ne ta shiga sel ɗin da babu komai.",
+      "difficulty": "Mai Sauƙi",
+      "category": "Asali",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan layi yana da lambobi 1-8 tare da sel ɗaya babu komai, wannan sel ɗin dole ne ya zama 9"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Bayyanar 'Yan Takara",
+      "description": "Tsari ne na cire 'yan takara marasa yiwuwa ta hanyar nuna lambobin da za su iya zama a cikin sel ɗin da babu komai.",
+      "difficulty": "Mai Sauƙi",
+      "category": "Asali",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Alama duk lambobin da za su iya zama don sel ɗin bisa ga layi, ginshiƙi, da akwatin",
+        "Idan lamba guda ɗaya ce kawai ba a nuna ba, dole ne ita ce mafita"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Tsallaken Layuka",
+      "description": "Duba akwatin ɗaya bayan ɗaya tare da bincika iyakokin layi da ginshiƙi.",
+      "difficulty": "Mai Sauƙi",
+      "category": "Asali",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Mai da hankali kan akwatin ɗaya lokaci guda, duba lambobin da ba su bayyana ba",
+        "Domin kowace lamba da ba a samu ba, duba layi/ginshiƙi don gano wuraren da za ta iya kasancewa"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Layin 'Yan Takara",
+      "description": "Lokacin da duk wuraren da lamba za ta iya kasancewa a cikin block suke cikin layi ɗaya ko ginshiƙi ɗaya, cire wannan lamba daga sauran layin/ginshiƙin a wasu blocks.",
+      "difficulty": "Matsakaici",
+      "category": "Tsaka-tsaki",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan a cikin akwatin 3x3, 5 zai iya kasancewa ne kawai a saman layi, cire 5 daga sauran wannan layin a wasu akwatuna"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Ma'auratan Bayyane",
+      "description": "Lokacin da sel biyu a cikin rukuni ke dauke da lambobi biyu iri ɗaya, cire waɗannan lambobin daga sauran sel ɗin cikin rukunin.",
+      "difficulty": "Matsakaici",
+      "category": "Tsaka-tsaki",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan sel biyu a layi suna iya zama 3 ko 7 kawai, cire 3 da 7 daga sauran sel ɗin a cikin wannan layi"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Kwamitin Bayyananne Uku",
+      "description": "Lokacin da sel uku a cikin rukuni ke dauke da lambobi uku iri ɗaya, cire waɗannan lambobin daga sauran sel ɗin cikin rukunin.",
+      "difficulty": "Matsakaici",
+      "category": "Tsaka-tsaki",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan sel uku a cikin ginshiƙi suna iya zama 4, 5, ko 6 a wasu tsaruka, cire waɗannan lambobin daga sauran sel ɗin a cikin ginshiƙi"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Kwamitin Boye Uku",
+      "description": "Lokacin da lambobi uku suka bayyana ne kawai a cikin sel uku a rukuni, cire sauran 'yan takara daga cikin waɗannan sel ɗin.",
+      "difficulty": "Matsakaici",
+      "category": "Tsaka-tsaki",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan lambobi 2, 4, da 6 sun bayyana ne kawai a cikin sel uku a akwatin, dole ne waɗannan sel su ƙunshi waɗannan lambobin"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "X-Wing (Asali)",
+      "description": "Lokacin da lamba ta bayyana ne a layuka biyu da ginshiƙi biyu da suke samar da murabba'i, cire wannan lambar daga sauran layuka da ginshiƙi waɗanda ba cikin murabba'in ba.",
+      "difficulty": "Matsakaici",
+      "category": "Tsaka-tsaki",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan 7 ta bayyana ne kawai a layuka 2 da 5 a ginshiƙi 3 da 7, cire sauran 7 a waɗannan ginshiƙi"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Launuka Masu Sauƙi",
+      "description": "Amfani da launuka biyu don bin diddigin yiwuwar lambobi don gano rashin daidaito ko tabbacin wurare.",
+      "difficulty": "Matsakaici",
+      "category": "Tsaka-tsaki",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan duk 5 da za su iya yiwuwa suna haɗe a wani sarkakiya inda launuka ke canzawa, za a iya cire yiwuwar da za su tilasta samun 5 biyu a rukuni ɗaya"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Y-Wing",
+      "description": "Wani dabarar amfani da sel uku da aka haɗa kamar juyin gefe da manyan hannu biyu don cire 'yan takara.",
+      "difficulty": "Matsakaici",
+      "category": "Tsaka-tsaki",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan sel A (3,5) ya haɗu da B (3,7) da C (5,7), kowanne sel da ke ganin B da C ba zai iya zama 7 ba"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Gine-Ginen Tsawo",
+      "description": "Haɗin ƙarfi biyu don ɗan takara wanda ke da layi ko ginshiƙi ɗaya, yana ba da damar cirewa.",
+      "difficulty": "Matsakaici",
+      "category": "Tsaka-tsaki",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan ɗan takara 5 ya bayyana sau biyu a cikin ginshiƙi kuma yana ƙirƙirar siffar 'skyscraper' tare da wani ginshiƙi",
+        "Za a iya cire 5 daga sel ɗin da ke gani ga 'towers' na skyscraper biyu"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Kite Mai Igiya Biyu",
+      "description": "Lamba wacce ke haɗa layi da ginshiƙi ta hanyar akwatin da aka raba, yana ƙirƙirar damar cirewa.",
+      "difficulty": "Matsakaici",
+      "category": "Tsaka-tsaki",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Lokacin da ɗan takara a layi ya haɗu da ɗan takara a ginshiƙi ta hanyar akwatin da aka raba",
+        "Cire ɗan takara daga sel ɗin haɗin gwiwa"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Ma'auratan Boye",
+      "description": "Lokacin da lambobi biyu suka bayyana ne kawai a cikin sel biyu na rukuni guda, cire sauran 'yan takara daga cikin waɗannan sel ɗin.",
+      "difficulty": "Matsananci",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan a cikin ginshiƙi, lambobi 4 da 5 suna bayyana ne kawai a cikin sel biyu tare, dole ne waɗannan sel su ƙunshi 4 da 5"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "X-Wing",
+      "description": "Lokacin da lamba ta bayyana ne a layuka biyu da ginshiƙi biyu da suke samar da murabba'i, cire wannan lambar daga sauran layuka da ginshiƙi waɗanda ba cikin murabba'in ba.",
+      "difficulty": "Mafi Tsanani",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan 7 ta bayyana ne kawai a layuka 2 da 5 a ginshiƙi 3 da 7, cire sauran 7 a waɗannan ginshiƙi"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Kifi Mai Taro",
+      "description": "Wani sigar X-Wing mai amfani da layuka uku da ginshiƙi uku maimakon biyu.",
+      "difficulty": "Matsananci",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan lamba 3 ta bayyana a layuka uku da ginshiƙi uku a wani tsari na musamman, za a iya cire sauran 3 a cikin waɗannan ginshiƙi"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "XYZ-Wing",
+      "description": "Tsawaita Y-Wing ta amfani da sel uku inda pivot ɗin ke dauke da 'yan takara uku.",
+      "difficulty": "Matsananci",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan sel A (4,5,6) ya haɗu da B (4,7) da C (5,7), kowanne sel da ke ganin duka B da C ba zai iya zama 7 ba"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "W-Wing",
+      "description": "Dabarar amfani da sel biyu masu ɗauke da 'yan takara biyu iri ɗaya da aka haɗa ta hanyar haɗin ƙarfi.",
+      "difficulty": "Matsananci",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan sel biyu (1,9) suna haɗe ta hanyar sarkar 1s, ɗaya daga cikinsu dole ne ya zama 9"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Jellyfish",
+      "description": "Tsari mai ci gaba mai kama da Kifi Mai Taro amma yana amfani da layuka hudu da ginshiƙi hudu.",
+      "difficulty": "Mafi Tsanani",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Lokacin da lamba ta bayyana a layuka hudu da ginshiƙi hudu a cikin tsari na musamman, yana bada damar cirewa"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Murabba'in Musamman",
+      "description": "Tsari wanda ke hana mafita da yawa ta hanyar tilasta wasu wurare.",
+      "difficulty": "Mafi Tsanani",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Idan sel hudu suka kafa murabba'i tare da 'yan takara biyu iri ɗaya, dole ne a sami ƙarin ƙa'idodi don hana mafita da yawa"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "Sarkar XY",
+      "description": "Sarkar sel ɗin da aka haɗa inda kowace haɗin ke raba ɗan takara tare da na gaba, yana bada damar cirewa a ƙarshen sarkar.",
+      "difficulty": "Matsananci",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "4-6 → 6-9 → 9-2 → 2-7 sarkar na nufin ɗaya daga ƙarshen dole ne ya zama 4 ko 7",
+        "Cire 'yan takara waɗanda ke gani ga ƙarshen biyu na sarkar"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "ALS-XZ",
+      "description": "Kungiyoyi biyu na 'Almost Locked Sets' da ke raba 'yan takara masu takaita, suna bada damar cirewa mai ci gaba.",
+      "difficulty": "Matsananci",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Lokacin da kungiyoyi biyu na sel suka raba ɗan takara ɗaya kawai",
+        "Za a iya cire wannan ɗan takara daga sel ɗin da ake gani"
+      ]
+    },
+    {
+      "id": "28",
+      "title": "Furen Mutuwa",
+      "description": "Tsari mai ci gaba wanda ke amfani da sel ɗin tsakiya da aka haɗa da kungiyoyi da dama na ALS.",
+      "difficulty": "Matsananci",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Sel ɗin tsakiya da ke haɗe da kungiyoyi uku na ALS",
+        "Ana yin cirewa bisa ƙa'idodin da aka raba"
+      ]
+    },
+    {
+      "id": "29", 
+      "title": "Network Links",
+      "description": "Using a large network of links to track possibilities and reveal contradictions.",
+      "difficulty": "Hard",
+      "category": "Advanced", 
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": ["If network forces candidate to exist twice in same unit, eliminate candidate"]
+    },
+    {
+      "id": "30",
+      "title": "Nodding Cycle", 
+      "description": "A cycle of links where candidate presence in one spot leads to contradiction, allowing elimination.",
+      "difficulty": "Hard",
+      "category": "Advanced",
+      "is_hint": true, 
+      "is_tutorial": true,
+      "examples": ["If placing candidate causes return to invalid state, eliminate that candidate"]
+    },
+    {
+      "id": "31",
+      "title": "Balancing Chain",
+      "description": "Using chain of links to balance candidate placement and eliminate incorrect possibilities.", 
+      "difficulty": "Hard",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": ["All chains leading to specific candidate show it must be correct"]
+    },
+    {
+      "id": "32", 
+      "title": "Digit Presence Check",
+      "description": "Examining digit presence across multiple regions to determine forced placements or eliminations.",
+      "difficulty": "Hard", 
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true, 
+      "examples": ["If digit appears only twice across all regions, its placement may be determined"]
+    },
+    {
+      "id": "33",
+      "title": "Candidate Chain",
+      "description": "Analyzing chains involving different candidates to determine contradictions or forced placements.",
+      "difficulty": "Hard",
+      "category": "Advanced", 
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": ["Chain connecting different candidates can eliminate choices in certain cells"]
+    },
+    {
+      "id": "34",
+      "title": "Collective Strong Links", 
+      "description": "Analyzing strong links derived from multiple candidates together.",
+      "difficulty": "Hard",
+      "category": "Advanced",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": ["Using strong links derived from more than one candidate to find solution"]
+    },
+    {
+      "id": "35",
+      "title": "Sarkar Tilasta Lamba",
+      "description": "Gwada wuraren da 'yan takara za su iya kasancewa don gano rashin daidaito ko tabbatarwa a cikin sel da dama.",
+      "difficulty": "Mafi Tsanani",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Yi zaton ɗan takara gaskiya ne ka bi sakamakon hakan",
+        "Idan hakan ya kai ga rashin daidaito, ɗan takarar dole ne ya zama ƙarya"
+      ]
+    },
+    {
+      "id": "36",
+      "title": "Launuka da yawa",
+      "description": "Tsawaita launuka da yawa don bin diddigin hulɗar 'yan takara masu rikitarwa.",
+      "difficulty": "Mafi Tsanani",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Amfani da launuka 4 ko fiye don bibiyar dogaro da 'yan takara",
+        "Gano cirewa inda launuka ke yin karo"
+      ]
+    },
+    {
+      "id": "37",
+      "title": "Saurin Taro na Tsari",
+      "description": "Haɗa tsarukan 'yan takara don gano wuraren da ba za a iya kauce wa cirewa ba.",
+      "difficulty": "Mafi Tsanani",
+      "category": "Ci gaba",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Taswirar duk wuraren da ɗan takara zai iya kasancewa",
+        "Gano sel ɗin da dole ne a cire ɗan takara daga cikinsu"
+      ]
+    }
+  ],
+  "meta": {
+    "strategyCount": 27,
+    "difficultyDistribution": {
+      "Easy": 9,
+      "Medium": 9,
+      "Hard": 9,
+      "Extreme": 3
+    },
+    "lastUpdated": "2024-05-20"
+  }
+}

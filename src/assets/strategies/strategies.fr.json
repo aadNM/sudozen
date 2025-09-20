@@ -1,0 +1,399 @@
+{
+  "_comment": "NE PAS MODIFIER APRÈS LA PUBLICATION - Stratégies de secours uniquement. Source principale : collection 'strategies' de PocketBase",
+  "version": "1.0.0",
+  "lastUpdated": "2024-05-20",
+  "strategies": [
+    {
+      "id": "1",
+      "title": "Candidat Unique",
+      "description": "Lorsqu'une cellule ne peut contenir qu'un seul nombre possible car tous les autres nombres sont déjà présents dans sa ligne, colonne ou boîte 3x3.",
+      "difficulty": "Facile",
+      "category": "Basique",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Imaginez une ligne avec les nombres 1-8 déjà présents - la cellule vide doit être 9"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Position Unique",
+      "description": "Lorsqu'un nombre ne peut aller que dans une seule cellule spécifique d'une ligne, colonne ou boîte car toutes les autres positions sont déjà occupées.",
+      "difficulty": "Facile",
+      "category": "Basique",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si une boîte 3x3 a les nombres 1-8 sauf 9, et qu'une seule cellule est vide, cette cellule doit être 9"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Vérification Ligne/Colonne",
+      "description": "Éliminez les candidats en vérifiant quels nombres sont déjà présents dans la ligne et la colonne.",
+      "difficulty": "Facile",
+      "category": "Basique",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si la ligne d'une cellule a 1,2,3 et la colonne a 4,5, les nombres possibles sont 6-9"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Réduction de Ligne/Colonne",
+      "description": "Lorsque toutes les positions possibles pour un nombre dans une boîte sont dans une seule ligne/colonne, éliminez ce nombre du reste de la ligne/colonne hors de la boîte.",
+      "difficulty": "Facile",
+      "category": "Basique",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si dans une boîte, le nombre 5 ne peut aller que dans la ligne du milieu, retirez 5 de cette ligne dans les autres boîtes"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Paires Évidentes",
+      "description": "Lorsque deux cellules dans une unité ont les deux mêmes candidats, ces nombres peuvent être éliminés des autres cellules de l'unité.",
+      "difficulty": "Facile",
+      "category": "Basique",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si deux cellules dans une colonne ne peuvent être que 2 ou 3, retirez 2 et 3 des autres cellules de cette colonne"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Paires Pointées",
+      "description": "Lorsque deux positions possibles pour un nombre dans une boîte s'alignent dans une ligne/colonne, éliminez ce nombre du reste de la ligne/colonne.",
+      "difficulty": "Facile",
+      "category": "Basique",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si dans une boîte, 7 ne peut aller que dans deux cellules de la même colonne, retirez 7 de cette colonne dans les autres boîtes"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Dernière Cellule Restante",
+      "description": "Lorsque tous les nombres sauf un ont été placés dans une ligne, colonne ou boîte, le dernier nombre restant doit aller dans la cellule vide.",
+      "difficulty": "Facile",
+      "category": "Basique",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si une ligne a les nombres 1-8 avec une cellule vide, cette cellule doit être 9"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Surbrillance des Candidats",
+      "description": "Éliminez systématiquement les candidats impossibles en marquant visuellement les nombres possibles dans les cellules vides.",
+      "difficulty": "Facile",
+      "category": "Basique",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Marquez tous les nombres possibles pour une cellule en fonction de sa ligne, colonne et boîte",
+        "Quand un seul nombre reste non marqué, c'est la solution"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Hachurage Croisé",
+      "description": "Scannez méthodiquement chaque boîte tout en vérifiant les contraintes de ligne et colonne.",
+      "difficulty": "Facile",
+      "category": "Basique",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Concentrez-vous sur une boîte à la fois, vérifiant quels nombres manquent",
+        "Pour chaque nombre manquant, vérifiez les lignes/colonnes pour trouver les positions possibles"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Lignes de Candidats",
+      "description": "Lorsque les positions possibles d'un nombre dans un bloc sont toutes dans la même ligne ou colonne, éliminez-le de cette ligne/colonne dans les autres blocs.",
+      "difficulty": "Moyen",
+      "category": "Intermédiaire",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si dans une boîte 3x3, 5 ne peut être que dans la ligne du haut, retirez 5 du reste de cette ligne dans les autres boîtes"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Paires Nues",
+      "description": "Lorsque deux cellules dans une unité contiennent exactement les deux mêmes nombres possibles, éliminez ces nombres des autres cellules de l'unité.",
+      "difficulty": "Moyen",
+      "category": "Intermédiaire",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si deux cellules dans une ligne ne peuvent être que 3 ou 7, retirez 3 et 7 des autres cellules de cette ligne"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Triplets Nus",
+      "description": "Lorsque trois cellules dans une unité ne contiennent que les trois mêmes nombres possibles, éliminez ces nombres des autres cellules de l'unité.",
+      "difficulty": "Moyen",
+      "category": "Intermédiaire",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si trois cellules dans une colonne ne peuvent être que 4,5,6 dans une certaine combinaison, retirez ces nombres des autres cellules de la colonne"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Triplets Cachés",
+      "description": "Lorsque trois nombres n'apparaissent que dans trois cellules d'une unité, éliminez les autres candidats de ces cellules.",
+      "difficulty": "Moyen",
+      "category": "Intermédiaire",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si les nombres 2,4,6 n'apparaissent que dans trois cellules d'une boîte, ces cellules doivent contenir ces nombres"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "X-Wing (Basique)",
+      "description": "Lorsqu'un nombre apparaît dans exactement deux lignes et deux colonnes formant un rectangle, éliminez-le de ces lignes/colonnes hors du rectangle.",
+      "difficulty": "Moyen",
+      "category": "Intermédiaire",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si 7 apparaît seulement dans les lignes 2 et 5 aux colonnes 3 et 7, retirez les autres 7 dans ces colonnes"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Coloration Simple",
+      "description": "Utilisez deux couleurs pour suivre les possibilités d'un nombre afin de trouver des contradictions ou des placements certains.",
+      "difficulty": "Moyen",
+      "category": "Intermédiaire",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si tous les 5 possibles sont connectés dans une chaîne où les couleurs alternent, vous pouvez éliminer les possibilités qui forceraient deux 5 dans la même unité"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Y-Wing",
+      "description": "Une technique utilisant trois cellules connectées comme un pivot et deux pinces pour éliminer des candidats.",
+      "difficulty": "Moyen",
+      "category": "Intermédiaire",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si la cellule A (3,5) se connecte à B (3,7) et C (5,7), toute cellule voyant B et C ne peut être 7"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Gratte-Ciel",
+      "description": "Deux liens forts pour un candidat qui partagent une ligne ou colonne commune, permettant des éliminations.",
+      "difficulty": "Moyen",
+      "category": "Intermédiaire",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Si le candidat 5 apparaît deux fois dans une colonne et forme une forme 'gratte-ciel' avec une autre colonne",
+        "Peut éliminer les 5 des cellules visibles par les deux 'tours' du gratte-ciel"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Cerf-Volant à Deux Fils",
+      "description": "Un nombre qui connecte une ligne et une colonne via une boîte partagée, créant des opportunités d'élimination.",
+      "difficulty": "Moyen",
+      "category": "Intermédiaire",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Quand un candidat dans une ligne se connecte à un candidat dans une colonne via une boîte partagée",
+        "Éliminez le candidat de la cellule d'intersection"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Paires Cachées",
+      "description": "Lorsque deux nombres n'apparaissent que dans les deux mêmes cellules d'une unité, éliminez les autres candidats de ces cellules.",
+      "difficulty": "Difficile",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si dans une colonne, les nombres 4 et 5 n'apparaissent que dans deux cellules ensemble, ces cellules doivent contenir 4 et 5"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "X-Wing",
+      "description": "Lorsqu'un nombre apparaît dans exactement deux lignes et deux colonnes formant un rectangle, éliminez-le de ces lignes/colonnes hors du rectangle.",
+      "difficulty": "Extrême",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si 7 apparaît seulement dans les lignes 2 et 5 aux colonnes 3 et 7, retirez les autres 7 dans ces colonnes"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Poisson Épée",
+      "description": "Une version avancée de X-Wing utilisant trois lignes et colonnes au lieu de deux.",
+      "difficulty": "Difficile",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si le nombre 3 apparaît dans trois lignes et exactement trois colonnes, aligné dans un motif spécifique, vous pouvez éliminer les autres 3 dans ces colonnes"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "XYZ-Wing",
+      "description": "Une extension de Y-Wing utilisant trois cellules où le pivot contient trois candidats.",
+      "difficulty": "Difficile",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si la cellule A (4,5,6) se connecte à B (4,7) et C (5,7), toute cellule voyant les trois ne peut être 7"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "W-Wing",
+      "description": "Une technique utilisant deux cellules avec les deux mêmes candidats connectés via un lien fort.",
+      "difficulty": "Difficile",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si deux cellules (1,9) sont connectées via une chaîne de 1, l'une d'elles doit être 9"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Poisson Gelée",
+      "description": "Un motif avancé similaire au Poisson Épée mais utilisant quatre lignes et colonnes.",
+      "difficulty": "Extrême",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Quand un nombre apparaît dans quatre lignes et exactement quatre colonnes dans un alignement spécifique, permettant des éliminations"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Rectangle Unique",
+      "description": "Un motif qui empêche des solutions multiples en forçant certains placements.",
+      "difficulty": "Extrême",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si quatre cellules forment un rectangle avec les deux mêmes candidats, des contraintes supplémentaires doivent s'appliquer pour empêcher des solutions multiples"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "Chaîne XY",
+      "description": "Une chaîne de cellules connectées où chaque lien partage un candidat avec le suivant, permettant des éliminations aux extrémités.",
+      "difficulty": "Difficile",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "4-6 → 6-9 → 9-2 → 2-7 chaîne signifie que chaque extrémité doit être 4 ou 7",
+        "Éliminez les candidats visibles par les deux extrémités de la chaîne"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "ALS-XZ",
+      "description": "Deux Ensembles Presque Verrouillés qui partagent des candidats restreints, permettant des éliminations avancées.",
+      "difficulty": "Difficile",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Quand deux groupes de cellules partagent exactement un candidat",
+        "Ce candidat partagé peut être éliminé des cellules visibles"
+      ]
+    },
+    {
+      "id": "28",
+      "title": "Fleur Mortelle",
+      "description": "Un motif avancé utilisant une cellule centrale connectée à plusieurs pétales ALS.",
+      "difficulty": "Difficile",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Une cellule centrale connectée à trois groupes ALS",
+        "Les éliminations se produisent basées sur des contraintes partagées"
+      ]
+    },
+    {
+      "id": "35",
+      "title": "Chaîne de Forçage",
+      "description": "Teste les placements de candidats pour trouver des contradictions ou vérifications à travers plusieurs cellules.",
+      "difficulty": "Extrême",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Supposez qu'un candidat est vrai et suivez les implications",
+        "Si cela mène à une contradiction, le candidat doit être faux"
+      ]
+    },
+    {
+      "id": "36",
+      "title": "Multi-Coloration",
+      "description": "Coloration étendue avec plusieurs couleurs pour suivre des interactions complexes de candidats.",
+      "difficulty": "Extrême",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Utilisez 4+ couleurs pour suivre les dépendances des candidats",
+        "Trouvez des éliminations où les couleurs entrent en conflit"
+      ]
+    },
+    {
+      "id": "37",
+      "title": "Superposition de Motifs",
+      "description": "Superpose des motifs de candidats pour identifier des éliminations inévitables.",
+      "difficulty": "Extrême",
+      "category": "Avancé",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Cartographiez toutes les positions possibles pour un candidat",
+        "Trouvez les cellules où le candidat doit être éliminé"
+      ]
+    }
+  ],
+  "meta": {
+    "strategyCount": 27,
+    "difficultyDistribution": {
+      "Facile": 9,
+      "Moyen": 9,
+      "Difficile": 9,
+      "Extrême": 3
+    },
+    "lastUpdated": "2024-05-20"
+  }
+}

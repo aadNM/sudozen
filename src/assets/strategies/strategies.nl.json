@@ -1,0 +1,399 @@
+{
+  "_comment": "NIET BEWERKEN NA RELEASE - Alleen fallback strategieën. Primaire bron: PocketBase 'strategies' collectie",
+  "version": "1.0.0",
+  "lastUpdated": "2024-05-20",
+  "strategies": [
+    {
+      "id": "1",
+      "title": "Enkele Kandidaat",
+      "description": "Wanneer een cel slechts één mogelijk getal kan bevatten omdat alle andere getallen al aanwezig zijn in zijn rij, kolom of 3x3 vak.",
+      "difficulty": "Makkelijk",
+      "category": "Basis",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Stel je een rij voor met de getallen 1-8 al aanwezig - de lege cel moet 9 zijn"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Enkele Positie",
+      "description": "Wanneer een getal slechts in één specifieke cel binnen een rij, kolom of vak kan staan omdat alle andere posities al bezet zijn.",
+      "difficulty": "Makkelijk",
+      "category": "Basis",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als een 3x3 vak de getallen 1-8 heeft behalve 9, en slechts één cel is leeg, dan moet die cel 9 zijn"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Rij/Kolom Controle",
+      "description": "Elimineer kandidaten door te controleren welke getallen al aanwezig zijn in de rij en kolom.",
+      "difficulty": "Makkelijk",
+      "category": "Basis",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als een cel in een rij 1,2,3 heeft en de kolom 4,5, dan zijn de mogelijke getallen 6-9"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Vak Lijn Reductie",
+      "description": "Wanneer alle mogelijke posities voor een getal in een vak in één rij/kolom liggen, elimineer dat getal dan uit de rest van de rij/kolom buiten het vak.",
+      "difficulty": "Makkelijk",
+      "category": "Basis",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als in een vak het getal 5 alleen in de middelste rij kan staan, verwijder dan 5 uit die rij in andere vakken"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Duidelijke Paren",
+      "description": "Wanneer twee cellen in een eenheid dezelfde twee kandidaten hebben, kunnen die getallen worden geëlimineerd uit andere cellen in die eenheid.",
+      "difficulty": "Makkelijk",
+      "category": "Basis",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als twee cellen in een kolom alleen 2 of 3 kunnen zijn, verwijder dan 2 en 3 uit andere cellen in die kolom"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Aanwijzende Paren",
+      "description": "Wanneer twee mogelijke posities voor een getal in een vak in dezelfde rij/kolom liggen, elimineer dat getal uit de rest van de rij/kolom.",
+      "difficulty": "Makkelijk",
+      "category": "Basis",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als in een vak 7 alleen in twee cellen in dezelfde kolom kan staan, verwijder dan 7 uit die kolom in andere vakken"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Laatste Overgebleven Cel",
+      "description": "Wanneer alle getallen behalve één in een rij, kolom of vak zijn geplaatst, moet het laatste overgebleven getal in de lege cel staan.",
+      "difficulty": "Makkelijk",
+      "category": "Basis",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als een rij de getallen 1-8 heeft met één lege cel, dan moet die cel 9 zijn"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Kandidaat Markering",
+      "description": "Systematisch onmogelijke kandidaten elimineren door visueel mogelijke getallen in lege cellen te markeren.",
+      "difficulty": "Makkelijk",
+      "category": "Basis",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Markeer alle mogelijke getallen voor een cel op basis van zijn rij, kolom en vak",
+        "Wanneer slechts één getal overblijft, moet dit de oplossing zijn"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Kruisarcering",
+      "description": "Methodisch elk vak scannen terwijl je controleert tegen de beperkingen van zijn rij en kolom.",
+      "difficulty": "Makkelijk",
+      "category": "Basis",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Focus op één vak tegelijk, controleer welke getallen ontbreken",
+        "Voor elk ontbrekend getal, controleer rijen/kolommen om mogelijke posities te vinden"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Kandidaat Lijnen",
+      "description": "Wanneer de mogelijke posities van een getal binnen een blok allemaal in dezelfde rij of kolom liggen, elimineer het dan uit die rij/kolom in andere blokken.",
+      "difficulty": "Gemiddeld",
+      "category": "Gemiddeld",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als in een 3x3 vak 5 alleen in de bovenste rij kan staan, verwijder dan 5 uit de rest van die rij in andere vakken"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Naakte Paren",
+      "description": "Wanneer twee cellen in een eenheid exact dezelfde twee mogelijke getallen bevatten, elimineer die getallen dan uit andere cellen in die eenheid.",
+      "difficulty": "Gemiddeld",
+      "category": "Gemiddeld",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als twee cellen in een rij alleen 3 of 7 kunnen zijn, verwijder dan 3 en 7 uit andere cellen in die rij"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Naakte Trio's",
+      "description": "Wanneer drie cellen in een eenheid alleen dezelfde drie mogelijke getallen bevatten, elimineer die getallen dan uit andere cellen in die eenheid.",
+      "difficulty": "Gemiddeld",
+      "category": "Gemiddeld",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als drie cellen in een kolom alleen 4,5,6 in een combinatie kunnen zijn, verwijder deze getallen dan uit andere cellen in de kolom"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Verborgen Trio's",
+      "description": "Wanneer drie getallen alleen in drie cellen van een eenheid voorkomen, elimineer andere kandidaten uit die cellen.",
+      "difficulty": "Gemiddeld",
+      "category": "Gemiddeld",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als de getallen 2,4,6 alleen in drie cellen van een vak voorkomen, moeten die cellen deze getallen bevatten"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "X-Vleugel (Basis)",
+      "description": "Wanneer een getal in precies twee rijen en twee kolommen voorkomt die een rechthoek vormen, elimineer het dan uit die rijen/kolommen buiten de rechthoek.",
+      "difficulty": "Gemiddeld",
+      "category": "Gemiddeld",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als 7 alleen in rij 2 en 5 voorkomt bij kolom 3 en 7, verwijder andere 7'en in die kolommen"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Eenvoudige Kleuring",
+      "description": "Gebruik twee kleuren om mogelijkheden voor een getal te volgen om tegenstrijdigheden of bepaalde plaatsingen te vinden.",
+      "difficulty": "Gemiddeld",
+      "category": "Gemiddeld",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als alle mogelijke 5'en verbonden zijn in een keten waar kleuren afwisselen, kun je mogelijkheden elimineren die twee 5'en in dezelfde eenheid zouden forceren"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Y-Vleugel",
+      "description": "Een techniek die drie cellen gebruikt die verbonden zijn als een draaipunt en twee tangen om kandidaten te elimineren.",
+      "difficulty": "Gemiddeld",
+      "category": "Gemiddeld",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als cel A (3,5) verbonden is met B (3,7) en C (5,7), kan elke cel die zowel B als C ziet geen 7 zijn"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Wolkenkrabber",
+      "description": "Twee sterke links voor een kandidaat die een gemeenschappelijke rij of kolom delen, waardoor eliminaties mogelijk zijn.",
+      "difficulty": "Gemiddeld",
+      "category": "Gemiddeld",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als kandidaat 5 twee keer in een kolom voorkomt en een 'wolkenkrabber' vormt met een andere kolom",
+        "Kan 5'en elimineren uit cellen die beide 'torens' van de wolkenkrabber kunnen zien"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Twee-Snaren Vlieger",
+      "description": "Een getal dat een rij en kolom verbindt via een gedeeld vak, wat eliminatiemogelijkheden creëert.",
+      "difficulty": "Gemiddeld",
+      "category": "Gemiddeld",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Wanneer een kandidaat in een rij verbonden is met een kandidaat in een kolom via een gedeeld vak",
+        "Elimineer de kandidaat uit de snijpuntcel"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Verborgen Paren",
+      "description": "Wanneer twee getallen alleen in dezelfde twee cellen van een eenheid voorkomen, elimineer andere kandidaten uit die cellen.",
+      "difficulty": "Moeilijk",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als in een kolom de getallen 4 en 5 alleen in twee cellen samen voorkomen, moeten die cellen 4 en 5 bevatten"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "X-Vleugel",
+      "description": "Wanneer een getal in precies twee rijen en twee kolommen voorkomt die een rechthoek vormen, elimineer het dan uit die rijen/kolommen buiten de rechthoek.",
+      "difficulty": "Extreem",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als 7 alleen in rij 2 en 5 voorkomt bij kolom 3 en 7, verwijder andere 7'en in die kolommen"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Zwaardvis",
+      "description": "Een geavanceerde versie van X-Vleugel die drie rijen en kolommen gebruikt in plaats van twee.",
+      "difficulty": "Moeilijk",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als getal 3 in drie rijen en precies drie kolommen voorkomt, uitgelijnd in een specifiek patroon, kun je andere 3'en in die kolommen elimineren"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "XYZ-Vleugel",
+      "description": "Een uitbreiding van Y-Vleugel die drie cellen gebruikt waar het draaipunt drie kandidaten bevat.",
+      "difficulty": "Moeilijk",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als cel A (4,5,6) verbonden is met B (4,7) en C (5,7), kan elke cel die alle drie ziet geen 7 zijn"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "W-Vleugel",
+      "description": "Een techniek die twee cellen gebruikt met dezelfde twee kandidaten verbonden via een sterke link.",
+      "difficulty": "Moeilijk",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als twee cellen (1,9) verbonden zijn via een keten van 1'en, moet één van hen 9 zijn"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Kwal",
+      "description": "Een geavanceerd patroon vergelijkbaar met Zwaardvis maar gebruikmakend van vier rijen en kolommen.",
+      "difficulty": "Extreem",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Wanneer een getal in vier rijen en precies vier kolommen voorkomt in een specifieke uitlijning, waardoor eliminaties mogelijk zijn"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Unieke Rechthoek",
+      "description": "Een patroon dat meerdere oplossingen voorkomt door bepaalde plaatsingen af te dwingen.",
+      "difficulty": "Extreem",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Als vier cellen een rechthoek vormen met dezelfde twee kandidaten, moeten aanvullende beperkingen gelden om meerdere oplossingen te voorkomen"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "XY-Keten",
+      "description": "Een keten van verbonden cellen waarbij elke link een kandidaat deelt met de volgende, waardoor eindpunteliminaties mogelijk zijn.",
+      "difficulty": "Moeilijk",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "4-6 → 6-9 → 9-2 → 2-7 keten betekent dat een van de uiteinden 4 of 7 moet zijn",
+        "Elimineer kandidaten zichtbaar voor beide uiteinden van de keten"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "ALS-XZ",
+      "description": "Twee Bijna Vergrendelde Sets die beperkte kandidaten delen, waardoor geavanceerde eliminaties mogelijk zijn.",
+      "difficulty": "Moeilijk",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Wanneer twee groepen cellen precies één kandidaat delen",
+        "Die gedeelde kandidaat kan worden geëlimineerd uit zichtbare cellen"
+      ]
+    },
+    {
+      "id": "28",
+      "title": "Doodsbloesem",
+      "description": "Een geavanceerd patroon dat een stamcel gebruikt verbonden met meerdere ALS-bloemblaadjes.",
+      "difficulty": "Moeilijk",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Een centrale cel verbonden met drie ALS-groepen",
+        "Eliminaties gebeuren op basis van gedeelde beperkingen"
+      ]
+    },
+    {
+      "id": "35",
+      "title": "Getal Dwingketen",
+      "description": "Test kandidaatplaatsingen om tegenstrijdigheden of verificaties over meerdere cellen te vinden.",
+      "difficulty": "Extreem",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Neem aan dat een kandidaat waar is en volg de implicaties",
+        "Als het tot een tegenstrijdigheid leidt, moet de kandidaat onwaar zijn"
+      ]
+    },
+    {
+      "id": "36",
+      "title": "Multi-Kleuring",
+      "description": "Uitgebreide kleuring met meerdere kleuren om complexe kandidaatinteracties te volgen.",
+      "difficulty": "Extreem",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Gebruik 4+ kleuren om kandidaatafhankelijkheden te volgen",
+        "Vind eliminaties waar kleuren conflicteren"
+      ]
+    },
+    {
+      "id": "37",
+      "title": "Patroon Overlay",
+      "description": "Superponeert kandidaatpatronen om onvermijdelijke eliminaties te identificeren.",
+      "difficulty": "Extreem",
+      "category": "Geavanceerd",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Map alle mogelijke posities voor een kandidaat",
+        "Vind cellen waar de kandidaat geëlimineerd moet worden"
+      ]
+    }
+  ],
+  "meta": {
+    "strategyCount": 27,
+    "difficultyDistribution": {
+      "Makkelijk": 9,
+      "Gemiddeld": 9,
+      "Moeilijk": 9,
+      "Extreem": 3
+    },
+    "lastUpdated": "2024-05-20"
+  }
+}

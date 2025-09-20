@@ -1,0 +1,54 @@
+{
+  "cli": {
+    "version": ">= 16.18.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "EXPO_PUBLIC_PB_ADMIN_EMAIL": "$PB_ADMIN_EMAIL_DEV",
+        "EXPO_PUBLIC_PB_ADMIN_PWD": "$PB_ADMIN_PWD_DEV",
+        "EXPO_PUBLIC_PB_URL": "$PB_URL_DEV",
+        "EXPO_PUBLIC_NODE_ENV": "development"
+      }
+    },
+    "preview": {
+      "distribution": "internal", 
+      "env": {
+        "EXPO_PUBLIC_PB_ADMIN_EMAIL": "$PB_ADMIN_EMAIL_DEV",
+        "EXPO_PUBLIC_PB_ADMIN_PWD": "$PB_ADMIN_PWD_DEV",
+        "EXPO_PUBLIC_PB_URL": "$PB_URL_DEV",
+        "EXPO_PUBLIC_NODE_ENV": "development"
+      }
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_PB_ADMIN_EMAIL": "$PB_ADMIN_EMAIL_PROD",
+        "EXPO_PUBLIC_PB_ADMIN_PWD": "$PB_ADMIN_PWD_PROD",
+        "EXPO_PUBLIC_PB_URL": "$PB_URL_PROD",
+        "EXPO_PUBLIC_NODE_ENV": "production"
+      }
+    },
+    "dev-with-prod": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "EXPO_PUBLIC_PB_ADMIN_EMAIL": "$PB_ADMIN_EMAIL_PROD",
+        "EXPO_PUBLIC_PB_ADMIN_PWD": "$PB_ADMIN_PWD_PROD",
+        "EXPO_PUBLIC_PB_URL": "$PB_URL_PROD",
+        "EXPO_PUBLIC_NODE_ENV": "development"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

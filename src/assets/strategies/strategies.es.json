@@ -1,0 +1,399 @@
+{
+  "_comment": "NO EDITAR DESPUÉS DEL LANZAMIENTO - Solo estrategias de respaldo. Fuente principal: colección 'strategies' de PocketBase",
+  "version": "1.0.0",
+  "lastUpdated": "2024-05-20",
+  "strategies": [
+    {
+      "id": "1",
+      "title": "Candidato Único",
+      "description": "Cuando una celda solo puede contener un número posible porque todos los demás números ya están presentes en su fila, columna o caja 3x3.",
+      "difficulty": "Fácil",
+      "category": "Básico",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Imagina una fila con los números 1-8 ya presentes - la celda vacía debe ser 9"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Posición Única",
+      "description": "Cuando un número solo puede ir en una celda específica dentro de una fila, columna o caja porque todas las demás posiciones ya están ocupadas.",
+      "difficulty": "Fácil",
+      "category": "Básico",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si una caja 3x3 tiene los números 1-8 excepto 9, y solo una celda está vacía, esa celda debe ser 9"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Verificación Fila/Columna",
+      "description": "Elimina candidatos verificando qué números ya están presentes en la fila y columna.",
+      "difficulty": "Fácil",
+      "category": "Básico",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si la fila de una celda tiene 1,2,3 y la columna tiene 4,5, los números posibles son 6-9"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Reducción de Fila/Columna",
+      "description": "Cuando todas las posiciones posibles para un número en una caja están en una sola fila/columna, elimina ese número del resto de la fila/columna fuera de la caja.",
+      "difficulty": "Fácil",
+      "category": "Básico",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si en una caja, el número 5 solo puede ir en la fila del medio, elimina 5 de esa fila en otras cajas"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Pares Obvios",
+      "description": "Cuando dos celdas en una unidad tienen los mismos dos candidatos, esos números pueden eliminarse de otras celdas en la unidad.",
+      "difficulty": "Fácil",
+      "category": "Básico",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si dos celdas en una columna solo pueden ser 2 o 3, elimina 2 y 3 de otras celdas en esa columna"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Pares Apuntados",
+      "description": "Cuando dos posiciones posibles para un número en una caja se alinean en una fila/columna, elimina ese número del resto de la fila/columna.",
+      "difficulty": "Fácil",
+      "category": "Básico",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si en una caja, 7 solo puede ir en dos celdas de la misma columna, elimina 7 de esa columna en otras cajas"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Última Celda Restante",
+      "description": "Cuando todos los números excepto uno han sido colocados en una fila, columna o caja, el último número restante debe ir en la celda vacía.",
+      "difficulty": "Fácil",
+      "category": "Básico",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si una fila tiene los números 1-8 con una celda vacía, esa celda debe ser 9"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Resaltado de Candidatos",
+      "description": "Elimina sistemáticamente candidatos imposibles marcando visualmente números posibles en celdas vacías.",
+      "difficulty": "Fácil",
+      "category": "Básico",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Marca todos los números posibles para una celda basado en su fila, columna y caja",
+        "Cuando solo un número queda sin marcar, debe ser la solución"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Tramado Cruzado",
+      "description": "Escanea metódicamente cada caja mientras verificas las restricciones de fila y columna.",
+      "difficulty": "Fácil",
+      "category": "Básico",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Enfócate en una caja a la vez, verificando qué números faltan",
+        "Para cada número faltante, verifica filas/columnas para encontrar posiciones posibles"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Líneas de Candidatos",
+      "description": "Cuando las posiciones posibles de un número en un bloque están todas en la misma fila o columna, elimínalo de esa fila/columna en otros bloques.",
+      "difficulty": "Medio",
+      "category": "Intermedio",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si en una caja 3x3, 5 solo puede estar en la fila superior, elimina 5 del resto de esa fila en otras cajas"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Pares Desnudos",
+      "description": "Cuando dos celdas en una unidad contienen exactamente los mismos dos números posibles, elimina esos números de otras celdas en la unidad.",
+      "difficulty": "Medio",
+      "category": "Intermedio",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si dos celdas en una fila solo pueden ser 3 o 7, elimina 3 y 7 de otras celdas en esa fila"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Tripletas Desnudas",
+      "description": "Cuando tres celdas en una unidad contienen solo los mismos tres números posibles, elimina esos números de otras celdas en la unidad.",
+      "difficulty": "Medio",
+      "category": "Intermedio",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si tres celdas en una columna solo pueden ser 4,5,6 en alguna combinación, elimina estos números de otras celdas en la columna"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Tripletas Ocultas",
+      "description": "Cuando tres números aparecen solo en tres celdas de una unidad, elimina otros candidatos de esas celdas.",
+      "difficulty": "Medio",
+      "category": "Intermedio",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si los números 2,4,6 aparecen solo en tres celdas de una caja, esas celdas deben contener estos números"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "X-Wing (Básico)",
+      "description": "Cuando un número aparece en exactamente dos filas y dos columnas formando un rectángulo, elimínalo de esas filas/columnas fuera del rectángulo.",
+      "difficulty": "Medio",
+      "category": "Intermedio",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si 7 aparece solo en las filas 2 y 5 en las columnas 3 y 7, elimina otros 7s en esas columnas"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Coloración Simple",
+      "description": "Usa dos colores para rastrear posibilidades de un número y encontrar contradicciones o colocaciones seguras.",
+      "difficulty": "Medio",
+      "category": "Intermedio",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si todos los posibles 5 están conectados en una cadena donde los colores alternan, puedes eliminar posibilidades que forzarían dos 5 en la misma unidad"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Y-Wing",
+      "description": "Una técnica que usa tres celdas conectadas como pivote y dos tenazas para eliminar candidatos.",
+      "difficulty": "Medio",
+      "category": "Intermedio",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si la celda A (3,5) se conecta a B (3,7) y C (5,7), cualquier celda que vea B y C no puede ser 7"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Rascacielos",
+      "description": "Dos enlaces fuertes para un candidato que comparten una fila o columna común, permitiendo eliminaciones.",
+      "difficulty": "Medio",
+      "category": "Intermedio",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Si el candidato 5 aparece dos veces en una columna y forma una forma de 'rascacielos' con otra columna",
+        "Puede eliminar 5s de celdas visibles por ambas 'torres' del rascacielos"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Cometa de Dos Cuerdas",
+      "description": "Un número que conecta una fila y columna a través de una caja compartida, creando oportunidades de eliminación.",
+      "difficulty": "Medio",
+      "category": "Intermedio",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Cuando un candidato en una fila se conecta a un candidato en una columna a través de una caja compartida",
+        "Elimina el candidato de la celda de intersección"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Pares Ocultos",
+      "description": "Cuando dos números solo aparecen en las mismas dos celdas de una unidad, elimina otros candidatos de esas celdas.",
+      "difficulty": "Difícil",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si en una columna, los números 4 y 5 solo aparecen en dos celdas juntas, esas celdas deben contener 4 y 5"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "X-Wing",
+      "description": "Cuando un número aparece en exactamente dos filas y dos columnas formando un rectángulo, elimínalo de esas filas/columnas fuera del rectángulo.",
+      "difficulty": "Extremo",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si 7 aparece solo en las filas 2 y 5 en las columnas 3 y 7, elimina otros 7s en esas columnas"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Pez Espada",
+      "description": "Una versión avanzada de X-Wing que usa tres filas y columnas en lugar de dos.",
+      "difficulty": "Difícil",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si el número 3 aparece en tres filas y exactamente tres columnas, alineado en un patrón específico, puedes eliminar otros 3s en esas columnas"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "XYZ-Wing",
+      "description": "Una extensión de Y-Wing que usa tres celdas donde el pivote contiene tres candidatos.",
+      "difficulty": "Difícil",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si la celda A (4,5,6) se conecta a B (4,7) y C (5,7), cualquier celda que vea las tres no puede ser 7"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "W-Wing",
+      "description": "Una técnica que usa dos celdas con los mismos dos candidatos conectados a través de un enlace fuerte.",
+      "difficulty": "Difícil",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si dos celdas (1,9) están conectadas a través de una cadena de 1s, una de ellas debe ser 9"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Pez Globo",
+      "description": "Un patrón avanzado similar al Pez Espada pero usando cuatro filas y columnas.",
+      "difficulty": "Extremo",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Cuando un número aparece en cuatro filas y exactamente cuatro columnas en una alineación específica, permitiendo eliminaciones"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Rectángulo Único",
+      "description": "Un patrón que previene múltiples soluciones forzando ciertas colocaciones.",
+      "difficulty": "Extremo",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": true,
+      "examples": [
+        "Si cuatro celdas forman un rectángulo con los mismos dos candidatos, deben aplicarse restricciones adicionales para prevenir múltiples soluciones"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "Cadena XY",
+      "description": "Una cadena de celdas conectadas donde cada enlace comparte un candidato con el siguiente, permitiendo eliminaciones en los extremos.",
+      "difficulty": "Difícil",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "4-6 → 6-9 → 9-2 → 2-7 cadena significa que cada extremo debe ser 4 o 7",
+        "Elimina candidatos visibles por ambos extremos de la cadena"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "ALS-XZ",
+      "description": "Dos Conjuntos Casi Bloqueados que comparten candidatos restringidos, permitiendo eliminaciones avanzadas.",
+      "difficulty": "Difícil",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Cuando dos grupos de celdas comparten exactamente un candidato",
+        "Ese candidato compartido puede eliminarse de celdas visibles"
+      ]
+    },
+    {
+      "id": "28",
+      "title": "Flor Mortal",
+      "description": "Un patrón avanzado usando una celda central conectada a múltiples pétalos ALS.",
+      "difficulty": "Difícil",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Una celda central conectada a tres grupos ALS",
+        "Las eliminaciones ocurren basadas en restricciones compartidas"
+      ]
+    },
+    {
+      "id": "35",
+      "title": "Cadena de Forzamiento",
+      "description": "Prueba colocaciones de candidatos para encontrar contradicciones o verificaciones a través de múltiples celdas.",
+      "difficulty": "Extremo",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Asume que un candidato es verdadero y sigue las implicaciones",
+        "Si lleva a una contradicción, el candidato debe ser falso"
+      ]
+    },
+    {
+      "id": "36",
+      "title": "Multi-Coloración",
+      "description": "Coloración extendida con múltiples colores para rastrear interacciones complejas de candidatos.",
+      "difficulty": "Extremo",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Usa 4+ colores para rastrear dependencias de candidatos",
+        "Encuentra eliminaciones donde los colores entran en conflicto"
+      ]
+    },
+    {
+      "id": "37",
+      "title": "Superposición de Patrones",
+      "description": "Superpone patrones de candidatos para identificar eliminaciones inevitables.",
+      "difficulty": "Extremo",
+      "category": "Avanzado",
+      "is_hint": true,
+      "is_tutorial": false,
+      "examples": [
+        "Mapea todas las posiciones posibles para un candidato",
+        "Encuentra celdas donde el candidato debe eliminarse"
+      ]
+    }
+  ],
+  "meta": {
+    "strategyCount": 27,
+    "difficultyDistribution": {
+      "Fácil": 9,
+      "Medio": 9,
+      "Difícil": 9,
+      "Extremo": 3
+    },
+    "lastUpdated": "2024-05-20"
+  }
+}
