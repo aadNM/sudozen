@@ -1,4 +1,4 @@
-/** /src/App.tsx */
+/** App.tsx */
 
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, DeviceEventEmitter, StatusBar, View } from "react-native";

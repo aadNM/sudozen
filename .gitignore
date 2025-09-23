@@ -44,3 +44,8 @@ app-example
 
 # VSCode
 .vscode/
+
+# Google services
+google-service-Info.plist
+google-services.json
+google-play-service-account.json
