@@ -50,14 +50,18 @@ export const getPublicCollections = async () => {
 
 export const ensureAdminAuth = async () => {
   try {
+    if (!PB_ADMIN_EMAIL || !PB_ADMIN_PWD) {
+      throw new Error("Admin credentials not available");
+    }
+    
     if (!pb.authStore.isSuperuser) {
       await pb.collection('__superusers').authWithPassword(
-        PB_ADMIN_EMAIL, 
+        PB_ADMIN_EMAIL,
         PB_ADMIN_PWD
       );
     }
   } catch (error) {
-    logMessage('error', "❌ Admin authentication failed:", { error: String(error)});
-    throw error;
+    logMessage('error', "Admin authentication failed:", { error: String(error)});
+    throw error; // Keep throwing so initDB() knows the fallback failed
   }
 };
