@@ -15,7 +15,6 @@
         "ITSAppUsesNonExemptEncryption": false
       },
       "icon": "./assets/images/ios-icon.png"
-      // "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "package": "com.SudoZen",
@@ -26,7 +25,6 @@
         "backgroundImage": "./assets/images/adaptive-background.png",
         "monochromeImage": "./assets/images/android-mono.png"
       }
-      // "googleServicesFile": "./google-services.json"
     },
     "plugins": [
       [
