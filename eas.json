@@ -1,7 +1,7 @@
 {
   "cli": {
     "version": ">= 16.18.1",
-    "appVersionSource": "local"
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
@@ -27,6 +27,7 @@
       }
     },
     "production": {
+      "autoIncrement": true,
       "env": {
         "EXPO_PUBLIC_PB_ADMIN_EMAIL": "$PB_ADMIN_EMAIL_PROD",
         "EXPO_PUBLIC_PB_ADMIN_PWD": "$PB_ADMIN_PWD_PROD",

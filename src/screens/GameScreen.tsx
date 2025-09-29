@@ -100,6 +100,18 @@ const GameScreen = () => {
     );
   });
 
+  const ScoreItem = ({ label, value, detail } :
+    { label: string; value: number | string; detail?: string }
+  ) => (
+    <View style={gameScStyles.scoreItem}>
+      <View style={gameScStyles.scoreItemLeft}>
+        <Text style={gameScStyles.scoreLabel}>{label}</Text>
+        {detail && <Text style={gameScStyles.scoreDetail}>{detail}</Text>}
+      </View>
+      <Text style={gameScStyles.scoreValue}>+{value}</Text>
+    </View>
+  );
+
   const gameState: GameState = React.useMemo(() => ({
     board,
     initialBoard,
@@ -799,13 +811,42 @@ const GameScreen = () => {
           >
             <View style={gameScStyles.celebMessageBox}>
               <Text style={gameScStyles.celebTitle}>{t('game.completion.title')}</Text>
-              <Text style={gameScStyles.celebText}>{t('game.completion.challengeBonus', {challengeBonus: challengeBonus.toFixed(2)})}</Text>
-              <Text style={gameScStyles.celebText}>{t('game.completion.streaksBonus', {streaks: streaks, streaksBonus: streakBonus.toFixed(2) })}</Text>
-              <Text style={gameScStyles.celebText}>{t('game.completion.timeBonus', { timeBonus: timeBonus.toFixed(2)})}</Text>
-              <Text style={gameScStyles.celebText}>{t('game.completion.zeroHelpBonus', { zeroHelp: zeroHelpBonus.toFixed(2)})}</Text>
-              <Text style={gameScStyles.celebTextTotal}>{t('game.completion.score', { score: completionScore })}</Text>
-              <Text style={gameScStyles.celebTextTotal}>{t('game.completion.time', { time: completionTime })}</Text>
-              <TouchableOpacity 
+              
+              {/* Score Breakdown */}
+              <View style={gameScStyles.scoreBreakdown}>
+                <ScoreItem 
+                  label={t('game.completion.challengeBonus')} 
+                  value={challengeBonus.toFixed(2)} 
+                />
+                <ScoreItem 
+                  label={t('game.completion.streaksBonus')} 
+                  value={streakBonus.toFixed(2)}
+                  detail={`${streaks} ${t('game.streaks')}`}
+                />
+                <ScoreItem 
+                  label={t('game.completion.timeBonus')} 
+                  value={timeBonus.toFixed(2)} 
+                />
+                <ScoreItem 
+                  label={t('game.completion.zeroHelpBonus')} 
+                  value={zeroHelpBonus.toFixed(2)} 
+                />
+              </View>
+
+              {/* Divider */}
+              <View style={gameScStyles.celebDivider} />
+
+              {/* Total Score & Time */}
+              <View style={gameScStyles.celebTotals}>
+                <Text style={gameScStyles.celebTextTotal}>
+                  {t('game.completion.finalScore')}: {completionScore}
+                </Text>
+                <Text style={gameScStyles.celebTime}>
+                  {t('game.completion.time', { time: completionTime })}
+                </Text>
+              </View>
+
+              <TouchableOpacity
                 style={gameScStyles.celebCloseButton}
                 onPress={() => {
                   setShowCelebration(false);

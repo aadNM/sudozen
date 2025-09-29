@@ -183,7 +183,51 @@ export const useGameScreenStyles = () => {
     celebCloseButtonText: {
       color: theme.colors.onPrimary,
       fontWeight: 'bold',
-    }
+    },
+    scoreBreakdown: {
+      width: '100%',
+      marginVertical: 16,
+    },
+    scoreItem: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingVertical: 8,
+      paddingHorizontal: 12,
+    },
+    scoreItemLeft: {
+      flex: 1,
+    },
+    scoreLabel: {
+      fontSize: 14,
+      color: '#666',
+      fontWeight: '500',
+    },
+    scoreDetail: {
+      fontSize: 12,
+      color: '#999',
+      marginTop: 2,
+    },
+    scoreValue: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#4CAF50',
+    },
+    celebDivider: {
+      height: 2,
+      backgroundColor: '#E0E0E0',
+      width: '100%',
+      marginVertical: 12,
+    },
+    celebTotals: {
+      alignItems: 'center',
+      marginBottom: 16,
+    },
+    celebTime: {
+      fontSize: 14,
+      color: '#666',
+      marginTop: 4,
+    },
 
   });
 };

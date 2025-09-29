@@ -99,7 +99,7 @@ const SettingsScreen = () => {
     const playerId = storage.getString("player_id");
 
     if (!playerId || playerId?.startsWith("guest-")) {
-      Alert.alert(t("common.error"), t("userDeletion.errorNoUser"));
+      Alert.alert(t("userDeletion.errorTitle"), t("userDeletion.errorNoUser"));
       return;
     }
     if (GuestUserService.getGuestUser()) return;
