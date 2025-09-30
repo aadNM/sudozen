@@ -173,10 +173,14 @@
       "rewardReceived": "Beloning ontvangen!",
       "extraChecksReceived": "Je hebt 1 extra controle gekregen voor alle blokken!"
     },
-    "completion": {
+   "completion": {
       "title": "Puzzel voltooid!",
+      "challengeBonusLabel": "Dagelijkse uitdaging",
+      "streaksBonusLabel": "Reeksbonus",
+      "timeBonusLabel": "Snelle voltooiing",
+      "zeroHelpBonusLabel": "Zonder hulp bonus",
       "challengeBonus": "Dagelijkse uitdaging bonus: {{challengeBonus}}",
-      "streaksBonus": "Reeksen: {{streaks}} - Reeksbonus: {{streaksBonus}}",
+      "streaks": "Reeksen: {{streaks}}",
       "timeBonus": "Snelle voltooiing: {{timeBonus}}",
       "zeroHelpBonus": "Zonder hulp bonus: {{zeroHelp}}",
       "score": "Eindscore: {{score}}",

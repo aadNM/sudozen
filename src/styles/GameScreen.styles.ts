@@ -169,11 +169,6 @@ export const useGameScreenStyles = () => {
       marginVertical: 5,
       color: theme.colors.onSurface,
     },
-    celebTextTotal: {
-      fontSize: 24,
-      marginVertical: 10,
-      color: theme.colors.tertiary,
-    },
     celebCloseButton: {
       marginTop: 15,
       padding: 10,
@@ -186,36 +181,43 @@ export const useGameScreenStyles = () => {
     },
     scoreBreakdown: {
       width: '100%',
-      marginVertical: 16,
+      marginVertical: 5,
     },
     scoreItem: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      paddingVertical: 8,
+      paddingVertical: 2,
       paddingHorizontal: 12,
+      minHeight: 40,
+      width: '100%', 
     },
     scoreItemLeft: {
       flex: 1,
+      marginRight: 10,
     },
     scoreLabel: {
-      fontSize: 14,
-      color: '#666',
+      fontSize: 16,
       fontWeight: '500',
+      flexShrink: 1,
+      color: theme.colors.onSurface,
     },
     scoreDetail: {
-      fontSize: 12,
-      color: '#999',
+      fontSize: 14,
       marginTop: 2,
+      padding: 10, 
+      color: theme.colors.secondary,
     },
     scoreValue: {
       fontSize: 16,
       fontWeight: 'bold',
       color: '#4CAF50',
+      flexShrink: 0, 
+      minWidth: 60, 
     },
     celebDivider: {
       height: 2,
-      backgroundColor: '#E0E0E0',
+      backgroundColor: theme.colors.tertiary,
       width: '100%',
       marginVertical: 12,
     },
@@ -223,10 +225,17 @@ export const useGameScreenStyles = () => {
       alignItems: 'center',
       marginBottom: 16,
     },
+    celebTextTotal: {
+      fontSize: 24,
+      marginVertical: 10,
+      color: theme.colors.tertiary,
+      fontWeight: 'bold',
+    },
     celebTime: {
-      fontSize: 14,
-      color: '#666',
+      fontSize: 20,
       marginTop: 4,
+      color: theme.colors.tertiary,
+      fontWeight: 'bold',
     },
 
   });

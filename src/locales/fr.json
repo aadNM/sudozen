@@ -173,10 +173,14 @@
       "rewardReceived": "Récompense reçue !",
       "extraChecksReceived": "Vous avez obtenu 1 vérification supplémentaire pour tous les blocs !"
     },
-    "completion": {
+   "completion": {
       "title": "Puzzle complété !",
+      "challengeBonusLabel": "Défi quotidien",
+      "streaksBonusLabel": "Bonus de séries",
+      "timeBonusLabel": "Complétion rapide",
+      "zeroHelpBonusLabel": "Bonus sans aide",
       "challengeBonus": "Bonus défi quotidien : {{challengeBonus}}",
-      "streaksBonus": "Séries : {{streaks}} - Bonus de séries : {{streaksBonus}}",
+      "streaks": "Séries : ",
       "timeBonus": "Bonus de rapidité : {{timeBonus}}",
       "zeroHelpBonus": "Bonus sans aide : {{zeroHelp}}",
       "score": "Score final : {{score}}",

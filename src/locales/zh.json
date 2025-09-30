@@ -175,8 +175,12 @@
     },
     "completion": {
       "title": "谜题完成！",
+      "challengeBonusLabel": "每日挑战",
+      "streaksBonusLabel": "连胜奖励",
+      "timeBonusLabel": "提前完成",
+      "zeroHelpBonusLabel": "完美奖励",
       "challengeBonus": "每日挑战奖励：{{challengeBonus}}",
-      "streaksBonus": "连胜：{{streaks}} - 连胜奖励：{{streaksBonus}}",
+      "streaks": "连胜：{{streaks}}",
       "timeBonus": "提前完成：{{timeBonus}}",
       "zeroHelpBonus": "完美奖励：{{zeroHelp}}",
       "score": "最终得分：{{score}}",

@@ -175,8 +175,12 @@
     },
     "completion": {
       "title": "Fumbo Limekamilika!",
+      "challengeBonusLabel": "Changamoto ya kila siku",
+      "streaksBonusLabel": "Bonasi ya mfululizo",
+      "timeBonusLabel": "Kumaliza mapema",
+      "zeroHelpBonusLabel": "Bonasi bila msaada",
       "challengeBonus": "Bonasi ya Changamoto ya Kila Siku: {{challengeBonus}}",
-      "streaksBonus": "Mfululizo: {{streaks}} - Bonasi ya Mfululizo: {{streaksBonus}}",
+      "streaks": "Mfululizo: {{streaks}}",
       "timeBonus": "Kumaliza Mapema: {{timeBonus}}",
       "zeroHelpBonus": "Bonasi Bila Msaada: {{zeroHelp}}",
       "score": "Alama za Mwisho: {{score}}",

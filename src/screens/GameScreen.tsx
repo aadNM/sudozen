@@ -1,23 +1,23 @@
 /** src/screens/GameScreen.tsx */
 
-import React, { useEffect, useRef, useState } from "react";
-import { View, Text, Modal, TouchableOpacity, Alert, ScrollView, BackHandler, Vibration, KeyboardAvoidingView, Platform, AppState, AppStateStatus } from "react-native";
-import storage from "../utils/mmkvStorage";
-import GameBoard from "../components/GameBoard";
-import { generateSudoku } from "../utils/SudokuUtils";
-import { useGameScreenStyles } from "../styles/GameScreen.styles";
-import { useGlobalStyles } from "../styles/Global.styles";
-import { clearPuzzleCaches, getPuzzle, saveScore, updatePlayerSolvedPuzzles } from "../services/PuzzleService";
-import { Difficulty, GameState, getMaxChecks, getMaxHints, GRID_SIZE, HintModalState, MAX_TIME_MINUTES, SavedGameData, Strategy } from "../types/GameTypes";
-import GameStateService from "../services/GameStateService";
 import { CommonActions, useNavigation } from "@react-navigation/native";
-import HintModal from "../components/HintModal";
-import { getRelevantHint } from "../services/StrategyService";
-import { logMessage } from "../utils/Logger";
-import AnimatedOverlay from "../components/AnimatedOverlay";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Alert, AppState, AppStateStatus, BackHandler, KeyboardAvoidingView, Modal, Platform, ScrollView, Text, TouchableOpacity, Vibration, View } from "react-native";
+import AnimatedOverlay from "../components/AnimatedOverlay";
+import GameBoard from "../components/GameBoard";
+import HintModal from "../components/HintModal";
 import { useEndGameInterstitial } from "../hooks/ads/Interstitial";
 import { useRewardedInterstitial } from "../hooks/ads/RewardedInterstitials";
+import GameStateService from "../services/GameStateService";
+import { clearPuzzleCaches, getPuzzle, saveScore, updatePlayerSolvedPuzzles } from "../services/PuzzleService";
+import { getRelevantHint } from "../services/StrategyService";
+import { useGameScreenStyles } from "../styles/GameScreen.styles";
+import { useGlobalStyles } from "../styles/Global.styles";
+import { Difficulty, GameState, getMaxChecks, getMaxHints, GRID_SIZE, HintModalState, MAX_TIME_MINUTES, SavedGameData } from "../types/GameTypes";
+import { logMessage } from "../utils/Logger";
+import storage from "../utils/mmkvStorage";
+import { generateSudoku } from "../utils/SudokuUtils";
 
 
 
@@ -124,11 +124,6 @@ const GameScreen = () => {
     extraHints,
     extraChecks
   }), [board, initialBoard, difficulty, totalSeconds, hintsUsed, currentPuzzleId, checksUsed, notes, extraHints, extraChecks]);
-
-  const getDifficultyLabel = (difficultyKey: string) => {
-    const difficultyObj = translatedDifficulties.find(d => d.key === difficultyKey);
-    return difficultyObj?.label || difficultyKey;
-  };
 
   const selectDifficulty = () => {
     setModalVisible(true);
@@ -805,7 +800,7 @@ const GameScreen = () => {
 
           {/* Celebration Animation */}
           <AnimatedOverlay
-            visible={showCelebration}
+            visible= {showCelebration}
             source={require('../assets/animations/fireworks.json')}
             onFinish={() => {}}
           >
@@ -814,22 +809,22 @@ const GameScreen = () => {
               
               {/* Score Breakdown */}
               <View style={gameScStyles.scoreBreakdown}>
-                <ScoreItem 
-                  label={t('game.completion.challengeBonus')} 
-                  value={challengeBonus.toFixed(2)} 
+                <ScoreItem
+                  label={t('game.completion.challengeBonusLabel')}
+                  value={challengeBonus.toFixed(2)}
                 />
-                <ScoreItem 
-                  label={t('game.completion.streaksBonus')} 
+                <ScoreItem
+                  label={t('game.completion.streaksBonusLabel')}
                   value={streakBonus.toFixed(2)}
-                  detail={`${streaks} ${t('game.streaks')}`}
+                  detail={`${t('game.completion.streaks')} ${streaks} `}
                 />
-                <ScoreItem 
-                  label={t('game.completion.timeBonus')} 
-                  value={timeBonus.toFixed(2)} 
+                <ScoreItem
+                  label={t('game.completion.timeBonusLabel')}
+                  value={timeBonus.toFixed(2)}
                 />
-                <ScoreItem 
-                  label={t('game.completion.zeroHelpBonus')} 
-                  value={zeroHelpBonus.toFixed(2)} 
+                <ScoreItem
+                  label={t('game.completion.zeroHelpBonusLabel')}
+                  value={zeroHelpBonus.toFixed(2)}
                 />
               </View>
 
@@ -839,7 +834,7 @@ const GameScreen = () => {
               {/* Total Score & Time */}
               <View style={gameScStyles.celebTotals}>
                 <Text style={gameScStyles.celebTextTotal}>
-                  {t('game.completion.finalScore')}: {completionScore}
+                  {t('game.completion.score', { score: completionScore})}
                 </Text>
                 <Text style={gameScStyles.celebTime}>
                   {t('game.completion.time', { time: completionTime })}

@@ -173,10 +173,14 @@
       "rewardReceived": "Reward Received!",
       "extraChecksReceived": "You got 1 extra check for all blocks!"
     },
-    "completion": {
+   "completion": {
       "title": "Puzzle Completed!",
+      "challengeBonusLabel": "Daily Challenge",
+      "streaksBonusLabel": "Streaks Bonus",
+      "timeBonusLabel": "Early Completion",
+      "zeroHelpBonusLabel": "Flawless Bonus",
       "challengeBonus": "Daily Challenge bonus: {{challengeBonus}}",
-      "streaksBonus": "Streaks: {{streaks}} - Streaks Bonus: {{streaksBonus}}",
+      "streaks": "Streaks : ",
       "timeBonus": "Early Completion: {{timeBonus}}",
       "zeroHelpBonus": "Flawless Bonus: {{zeroHelp}}",
       "score": "Final Score: {{score}}",

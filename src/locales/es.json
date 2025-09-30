@@ -176,8 +176,12 @@
     },
     "completion": {
       "title": "¡Puzzle completado!",
+      "challengeBonusLabel": "Desafío diario",
+      "streaksBonusLabel": "Bono de rachas",
+      "timeBonusLabel": "Terminación temprana",
+      "zeroHelpBonusLabel": "Bono sin ayuda",
       "challengeBonus": "Bono de desafío diario: {{challengeBonus}}",
-      "streaksBonus": "Rachas: {{streaks}} - Bono de rachas: {{streaksBonus}}",
+      "streaks": "Rachas: ",
       "timeBonus": "Bono por terminar rápido: {{timeBonus}}",
       "zeroHelpBonus": "Bono sin ayuda: {{zeroHelp}}",
       "score": "Puntuación final: {{score}}",

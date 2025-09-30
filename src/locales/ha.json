@@ -175,8 +175,12 @@
     },
     "completion": {
       "title": "An kammala matsala!",
+      "challengeBonusLabel": "Kalubale na yau",
+      "streaksBonusLabel": "Karin tsararraki",
+      "timeBonusLabel": "An gama da wuri",
+      "zeroHelpBonusLabel": "Ba tare da taimako ba",
       "challengeBonus": "Karin Kalubale na yau: {{challengeBonus}}",
-      "streaksBonus": "Tsararraki: {{streaks}} - Karin Tsararraki: {{streaksBonus}}",
+      "streaks": "Tsararraki: ",
       "timeBonus": "An gama da wuri: {{timeBonus}}",
       "zeroHelpBonus": "Karin ba tare da taimako ba: {{zeroHelp}}",
       "score": "Maki na ƙarshe: {{score}}",
