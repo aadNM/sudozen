@@ -77,6 +77,9 @@ export const useGameScreenStyles = () => {
     topControls: {
       flexDirection: 'row',
       alignItems: 'center',
+      alignSelf: 'center',
+      width: '100%',
+      maxWidth: 400,
       justifyContent: 'space-between', 
       flexWrap: 'wrap', 
       gap: 8, 
@@ -88,8 +91,8 @@ export const useGameScreenStyles = () => {
       flexDirection: 'row',
       alignItems: 'center',
       marginLeft: 8,
-      flexShrink: 1,
-      flexGrow: 1,
+      justifyContent: 'flex-end',
+      minWidth: 160,
     },
     notesContainer: {
       marginVertical: 12,

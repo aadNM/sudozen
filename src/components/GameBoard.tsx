@@ -1,15 +1,15 @@
 /** src/components/GameBoard.tsx */
 
 import React, { useEffect, useState } from "react";
-import { View, TextInput, Button, Alert, TouchableOpacity, Text, Vibration, StyleProp, ViewStyle} from "react-native";
-import { isBlockValid, isBlockValidFinal, isPuzzleSolved, validateAgainstSolution } from "../utils/SudokuUtils";
+import { useTranslation } from "react-i18next";
+import { Alert, Text, TextInput, TouchableOpacity, Vibration, View } from "react-native";
+import { useTheme } from "../context/ThemeContext";
+import { useGameBoardStyles } from "../styles/GameBoard.styles";
 import { useGameScreenStyles } from "../styles/GameScreen.styles";
+import { useTypography } from "../styles/Typography";
 import { Difficulty, GameBoardProps, getMaxChecks } from "../types/GameTypes";
 import storage from "../utils/mmkvStorage";
-import { useTheme } from "../context/ThemeContext";
-import { useTypography } from "../styles/Typography";
-import { useGameBoardStyles } from "../styles/GameBoard.styles";
-import { useTranslation } from "react-i18next";
+import { isBlockValid, isPuzzleSolved } from "../utils/SudokuUtils";
 
 
 const GameBoard: React.FC<GameBoardProps> = ({ 

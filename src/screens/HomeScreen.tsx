@@ -1,19 +1,19 @@
 /** /src/screens/HomeScreen.tsx */
 
-import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Vibration, Pressable, Linking, Text, Alert } from "react-native";
-import { Button, useTheme } from "react-native-paper";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import storage from "../utils/mmkvStorage";
-import GameStateService from "../services/GameStateService";
+import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from "../types/GameTypes";
-import { useTypography } from "../styles/Typography";
-import { useGlobalStyles } from "../styles/Global.styles";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { GuestUserService } from "../services/GuestUserService";
-import { triggerGuestUpgrade } from "../utils/GuestUpgradeUtils";
+import { Alert, Linking, Pressable, StyleSheet, Text, Vibration, View } from "react-native";
+import { Button, useTheme } from "react-native-paper";
 import { SudokuBanner } from "../hooks/ads/Banner";
+import GameStateService from "../services/GameStateService";
+import { GuestUserService } from "../services/GuestUserService";
+import { useGlobalStyles } from "../styles/Global.styles";
+import { useTypography } from "../styles/Typography";
+import { RootStackParamList } from "../types/GameTypes";
+import { triggerGuestUpgrade } from "../utils/GuestUpgradeUtils";
+import storage from "../utils/mmkvStorage";
 
 const LEARN = "https://conquerdaily.com/mastering-sudoku-complete-tutorial-sudozen/";
 
@@ -166,8 +166,8 @@ const HomeScreen = () => {
       textAlign: 'center',
     },
     button: {
-      width: '80%',
-      maxWidth: 300,
+      width: '70%',
+      maxWidth: "90%",
       marginVertical: 10,
       borderTopLeftRadius: 8,
       borderBottomRightRadius: 8,
@@ -310,6 +310,7 @@ const HomeScreen = () => {
         </View>
       </Pressable>
       
+      <SudokuBanner />
       <SudokuBanner />
     </View>
   );
