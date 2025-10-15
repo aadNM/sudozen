@@ -15,6 +15,7 @@ import {
   Modal,
   DeviceEventEmitter,
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Clipboard from '@react-native-clipboard/clipboard';
 import { useTranslation } from 'react-i18next';
 import pb from '../services/PocketbaseClient';
@@ -613,9 +614,15 @@ export default function UserCreationScreen({ onCreated, isGuestUpgrade = false }
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    <KeyboardAwareScrollView
+      contentContainerStyle={styles.container}
+      keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
+      enableOnAndroid={true}
+      enableAutomaticScroll={true}
+      extraScrollHeight={Platform.OS === 'ios' ? 20 : 100}
+      extraHeight={Platform.OS === 'android' ? 100 : 0}
+      keyboardOpeningTime={0}
     >
 
       {renderBackButton()}
@@ -804,6 +811,6 @@ export default function UserCreationScreen({ onCreated, isGuestUpgrade = false }
 
       <SudokuBanner />
 
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 }

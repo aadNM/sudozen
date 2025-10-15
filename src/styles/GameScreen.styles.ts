@@ -83,7 +83,7 @@ export const useGameScreenStyles = () => {
       justifyContent: 'space-between', 
       flexWrap: 'wrap', 
       gap: 8, 
-      marginBottom: 5,
+      marginBottom: 2,
       marginTop: 0,
       paddingHorizontal: 8,
     },
@@ -95,8 +95,8 @@ export const useGameScreenStyles = () => {
       minWidth: 160,
     },
     notesContainer: {
-      marginVertical: 12,
-      paddingBottom: 15,
+      marginVertical: 10,
+      paddingBottom: 22,
     }, 
     bottomControls: {
       flexDirection: 'row',

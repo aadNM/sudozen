@@ -2,6 +2,7 @@
 
 import { CommonActions, useNavigation } from "@react-navigation/native";
 import React, { useEffect, useRef, useState } from "react";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from "react-i18next";
 import { Alert, AppState, AppStateStatus, BackHandler, KeyboardAvoidingView, Modal, Platform, ScrollView, Text, TouchableOpacity, Vibration, View } from "react-native";
 import AnimatedOverlay from "../components/AnimatedOverlay";
@@ -80,7 +81,7 @@ const GameScreen = () => {
 
   const { showInterstitial } = useEndGameInterstitial();
 
-  const { showRewarded: showRewardedHints } = useRewardedInterstitial(1, (reward) => {
+  const { showRewarded: showRewardedHints, isLoaded: hintsAdLoaded, isLoading: hintsAdLoading } = useRewardedInterstitial(1, (reward) => {
     setExtraHints(prev => prev + 2);
     Vibration.vibrate(100);
     Alert.alert(
@@ -90,7 +91,7 @@ const GameScreen = () => {
     );
   });
 
-  const { showRewarded: showRewardedChecks } = useRewardedInterstitial(2, (reward) => {
+  const { showRewarded: showRewardedChecks, isLoaded: checksAdLoaded, isLoading: checksAdLoading } = useRewardedInterstitial(2, (reward) => {
     setExtraChecks(prev => prev + 1);
     Vibration.vibrate(100);
     Alert.alert(
@@ -693,17 +694,15 @@ const GameScreen = () => {
   
 
   return (
-    <KeyboardAvoidingView 
-      style={{ flex: 1 }} 
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
-      enabled={true}
-    >
-      <ScrollView 
+      <KeyboardAwareScrollView
         contentContainerStyle={globalStyles.scrollContainer}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-        >
+        enableOnAndroid={true}
+        enableAutomaticScroll={true}
+        extraScrollHeight={100} // Extra space above keyboard
+        extraHeight={50}
+      >
         <View style={globalStyles.container}>
           {isLoading ? (
             <AnimatedOverlay
@@ -854,8 +853,7 @@ const GameScreen = () => {
             </View>
           </AnimatedOverlay>
         </View>
-      </ScrollView>
-    </KeyboardAvoidingView>  
+      </KeyboardAwareScrollView>  
   );
 };
 

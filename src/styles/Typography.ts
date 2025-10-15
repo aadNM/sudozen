@@ -45,7 +45,7 @@ export const useTypography = (): { [key: string]: TextStyle } => {
       color: theme.colors.error, 
     },
     timer: {
-      fontSize: 20,
+      fontSize: 14,
       fontWeight: 'bold',
       textAlign: 'center',
       marginVertical: 1,
