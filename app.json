@@ -2,7 +2,7 @@
   "expo": {
     "name": "SudoZen",
     "slug": "sudozenexpo",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/ios-icon.png",
     "scheme": "sudozen",
@@ -10,7 +10,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.SudoZen.conquerdaily",
-      "buildNumber": "4",
+      "buildNumber": "1",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       },
@@ -18,7 +18,7 @@
     },
     "android": {
       "package": "com.SudoZen",
-      "versionCode": 23,
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#020A27",
         "foregroundImage": "./assets/images/adaptive-foreground.png",
