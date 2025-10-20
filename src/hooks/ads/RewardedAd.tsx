@@ -1,6 +1,7 @@
 /** src/hooks/ads/RewardedAd.tsx */
 
 import { getAdUnitId } from '@/src/utils/ads';
+import { logMessage } from '@/src/utils/Logger';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Alert } from 'react-native';
 import { AdEventType, RewardedAd, RewardedAdEventType } from 'react-native-google-mobile-ads';
@@ -22,7 +23,7 @@ export function useRewardedAd(
   useEffect(() => {
     const adUnitId = getAdUnitId(which === 1 ? 'rewardedInterstitial1' : 'rewardedInterstitial2');
     
-    console.log(`[Rewarded ${which}] Initializing with ad unit: ${adUnitId}`);
+    logMessage('info', `[Rewarded ${which}] Initializing with ad unit: ${adUnitId}`, { adUnitId, which });
     
     const ad = RewardedAd.createForAdRequest(adUnitId, {
       requestNonPersonalizedAdsOnly: true,
@@ -31,32 +32,32 @@ export function useRewardedAd(
     adRef.current = ad;
 
     const unsubscribeLoaded = ad.addAdEventListener(RewardedAdEventType.LOADED, () => {
-      console.log(`[Rewarded ${which}] ✅ Ad loaded successfully`);
+      logMessage('info', `[Rewarded ${which}] ✅ Ad loaded successfully`, { which });
       setIsLoaded(true);
       setIsLoading(false);
       setLoadAttempts(0);
     });
 
     const unsubscribeEarn = ad.addAdEventListener(RewardedAdEventType.EARNED_REWARD, (reward) => {
-      console.log(`[Rewarded ${which}] 🎁 Reward earned:`, reward);
+      logMessage('info', `[Rewarded ${which}] 🎁 Reward earned`, { which, reward });
       onRewardRef.current(reward);
     });
 
     const unsubscribeClose = ad.addAdEventListener(AdEventType.CLOSED, () => {
-      console.log(`[Rewarded ${which}] Ad closed, reloading...`);
+      logMessage('info', `[Rewarded ${which}] Ad closed, reloading...`, { which });
       setIsLoaded(false);
       setIsLoading(true);
       ad.load();
     });
 
     const unsubscribeError = ad.addAdEventListener(AdEventType.ERROR, (error) => {
-      console.error(`[Rewarded ${which}] ❌ Error:`, JSON.stringify(error, null, 2));
+      logMessage('error', `[Rewarded ${which}] ❌ Error`, { which, error });
       setIsLoaded(false);
       setIsLoading(false);
       
       if (loadAttempts < 3) {
         const delay = Math.min(1000 * Math.pow(2, loadAttempts), 10000);
-        console.log(`[Rewarded ${which}] Retrying in ${delay}ms... (attempt ${loadAttempts + 1}/3)`);
+        logMessage('warn', `[Rewarded ${which}] Retrying`, { which, delay, attempt: loadAttempts + 1 });
         
         setTimeout(() => {
           setLoadAttempts(prev => prev + 1);
@@ -64,7 +65,7 @@ export function useRewardedAd(
           ad.load();
         }, delay);
       } else {
-        console.log(`[Rewarded ${which}] Max retry attempts reached`);
+        logMessage('error', `[Rewarded ${which}] Max retry attempts reached`, { which });
         Alert.alert(
           'Ad Not Available',
           'Unable to load ad at this time. Please try again later.',
@@ -73,12 +74,12 @@ export function useRewardedAd(
       }
     });
 
-    console.log(`[Rewarded ${which}] Starting initial load...`);
+    logMessage('info', `[Rewarded ${which}] Starting initial load`, { which });
     setIsLoading(true);
     ad.load();
 
     return () => {
-      console.log(`[Rewarded ${which}] Cleaning up listeners`);
+      logMessage('debug', `[Rewarded ${which}] Cleaning up listeners`, { which });
       unsubscribeLoaded();
       unsubscribeEarn();
       unsubscribeClose();
@@ -87,27 +88,27 @@ export function useRewardedAd(
   }, [which, loadAttempts]);
 
   const showRewarded = useCallback(() => {
-    console.log(`[Rewarded ${which}] showRewarded called. isLoaded: ${isLoaded}, isLoading: ${isLoading}`);
+    logMessage('debug', `[Rewarded ${which}] showRewarded called`, { which, isLoaded, isLoading });
     
     if (!adRef.current) {
-      console.warn(`[Rewarded ${which}] Ad instance not initialized`);
+      logMessage('warn', `[Rewarded ${which}] Ad instance not initialized`, { which });
       Alert.alert('Error', 'Ad system not ready. Please try again.');
       return;
     }
 
     if (isLoaded) {
-      console.log(`[Rewarded ${which}] Showing ad...`);
+      logMessage('info', `[Rewarded ${which}] Showing ad`, { which });
       adRef.current.show();
       setIsLoaded(false);
     } else if (isLoading) {
-      console.log(`[Rewarded ${which}] Ad is still loading...`);
+      logMessage('info', `[Rewarded ${which}] Ad is still loading`, { which });
       Alert.alert(
         'Please Wait',
         'Ad is loading. Please try again in a moment.',
         [{ text: 'OK' }]
       );
     } else {
-      console.log(`[Rewarded ${which}] Ad not loaded, attempting to load now...`);
+      logMessage('warn', `[Rewarded ${which}] Ad not loaded, attempting to load`, { which });
       Alert.alert(
         'Loading Ad',
         'Please wait while we load the ad...',
