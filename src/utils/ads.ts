@@ -16,12 +16,12 @@ export const AD_UNIT_IDS = {
     ios: IS_DEV ? TestIds.BANNER : 'ca-app-pub-0000000000000000/1645523387'
   },
   rewardedInterstitial1: {
-    android: IS_DEV ? TestIds.REWARDED_INTERSTITIAL : 'ca-app-pub-0000000000000000/9647851078',
-    ios: IS_DEV ? TestIds.REWARDED_INTERSTITIAL : 'ca-app-pub-0000000000000000/2842769576'
+    android: IS_DEV ? TestIds.REWARDED : 'ca-app-pub-0000000000000000/9647851078',
+    ios: IS_DEV ? TestIds.REWARDED : 'ca-app-pub-0000000000000000/2842769576'
   },
   rewardedInterstitial2: {
-    android: IS_DEV ? TestIds.REWARDED_INTERSTITIAL : 'ca-app-pub-0000000000000000/6590442897',
-    ios: IS_DEV ? TestIds.REWARDED_INTERSTITIAL : 'ca-app-pub-0000000000000000/3309958843'
+    android: IS_DEV ? TestIds.REWARDED : 'ca-app-pub-0000000000000000/6590442897',
+    ios: IS_DEV ? TestIds.REWARDED : 'ca-app-pub-0000000000000000/3309958843'
   }
 };
 

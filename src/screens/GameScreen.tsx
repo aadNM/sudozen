@@ -9,7 +9,6 @@ import AnimatedOverlay from "../components/AnimatedOverlay";
 import GameBoard from "../components/GameBoard";
 import HintModal from "../components/HintModal";
 import { useEndGameInterstitial } from "../hooks/ads/Interstitial";
-import { useRewardedInterstitial } from "../hooks/ads/RewardedInterstitials";
 import GameStateService from "../services/GameStateService";
 import { clearPuzzleCaches, getPuzzle, saveScore, updatePlayerSolvedPuzzles } from "../services/PuzzleService";
 import { getRelevantHint } from "../services/StrategyService";
@@ -19,6 +18,7 @@ import { Difficulty, GameState, getMaxChecks, getMaxHints, GRID_SIZE, HintModalS
 import { logMessage } from "../utils/Logger";
 import storage from "../utils/mmkvStorage";
 import { generateSudoku } from "../utils/SudokuUtils";
+import { useRewardedAd } from "../hooks/ads/RewardedAd";
 
 
 
@@ -81,7 +81,7 @@ const GameScreen = () => {
 
   const { showInterstitial } = useEndGameInterstitial();
 
-  const { showRewarded: showRewardedHints, isLoaded: hintsAdLoaded, isLoading: hintsAdLoading } = useRewardedInterstitial(1, (reward) => {
+  const { showRewarded: showRewardedHints, isLoaded: hintsAdLoaded, isLoading: hintsAdLoading } = useRewardedAd(1, (reward) => {
     setExtraHints(prev => prev + 2);
     Vibration.vibrate(100);
     Alert.alert(
@@ -91,7 +91,7 @@ const GameScreen = () => {
     );
   });
 
-  const { showRewarded: showRewardedChecks, isLoaded: checksAdLoaded, isLoading: checksAdLoading } = useRewardedInterstitial(2, (reward) => {
+  const { showRewarded: showRewardedChecks, isLoaded: checksAdLoaded, isLoading: checksAdLoading } = useRewardedAd(2, (reward) => {
     setExtraChecks(prev => prev + 1);
     Vibration.vibrate(100);
     Alert.alert(
