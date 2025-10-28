@@ -2,13 +2,14 @@
 
 import { CommonActions, useNavigation } from "@react-navigation/native";
 import React, { useEffect, useRef, useState } from "react";
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from "react-i18next";
-import { Alert, AppState, AppStateStatus, BackHandler, KeyboardAvoidingView, Modal, Platform, ScrollView, Text, TouchableOpacity, Vibration, View } from "react-native";
+import { Alert, AppState, AppStateStatus, BackHandler, Modal, Text, TouchableOpacity, Vibration, View } from "react-native";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import AnimatedOverlay from "../components/AnimatedOverlay";
 import GameBoard from "../components/GameBoard";
 import HintModal from "../components/HintModal";
 import { useEndGameInterstitial } from "../hooks/ads/Interstitial";
+import { useRewardedAd } from "../hooks/ads/RewardedAd";
 import GameStateService from "../services/GameStateService";
 import { clearPuzzleCaches, getPuzzle, saveScore, updatePlayerSolvedPuzzles } from "../services/PuzzleService";
 import { getRelevantHint } from "../services/StrategyService";
@@ -18,7 +19,6 @@ import { Difficulty, GameState, getMaxChecks, getMaxHints, GRID_SIZE, HintModalS
 import { logMessage } from "../utils/Logger";
 import storage from "../utils/mmkvStorage";
 import { generateSudoku } from "../utils/SudokuUtils";
-import { useRewardedAd } from "../hooks/ads/RewardedAd";
 
 
 
@@ -241,6 +241,7 @@ const GameScreen = () => {
           value: hint.value,
           strategy: hint.strategy
         });
+        setHintsUsed(hintsUsed + 1);
       } else {
         Alert.alert(
           `Hint: ${hint.strategy.title}`, 

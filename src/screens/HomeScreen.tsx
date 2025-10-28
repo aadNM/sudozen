@@ -4,8 +4,9 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Alert, Linking, Pressable, StyleSheet, Text, Vibration, View } from "react-native";
-import { Button, useTheme } from "react-native-paper";
+import { Alert, ImageBackground, Linking, Pressable, StyleSheet, Text, Vibration, View } from "react-native";
+import { Button } from "react-native-paper";
+import { useTheme } from "../context/ThemeContext";
 import { SudokuBanner } from "../hooks/ads/Banner";
 import GameStateService from "../services/GameStateService";
 import { GuestUserService } from "../services/GuestUserService";
@@ -23,10 +24,14 @@ const HomeScreen = () => {
   const [hasResumableGame, setHasResumableGame] = useState(false);
   const [isGuestMode, setIsGuestMode] = useState(false);
   const [gamesRemaining, setGamesRemaining] = useState(0);
-  const theme = useTheme();
+  const { theme } = useTheme();
   const typography = useTypography();
   const globalStyles = useGlobalStyles();
   const { t } = useTranslation();
+
+  const backgroundImage = theme.name === "dark"
+    ? require("../assets/backgrounds/dark-bg-2.png")
+    : require("../assets/backgrounds/light-bg-2.png");
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
@@ -232,6 +237,11 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
+      <ImageBackground
+        source={backgroundImage}
+        style={StyleSheet.absoluteFill}
+        resizeMode="cover"
+      />
       {renderGuestUpgradeBanner()}
       
       {hasResumableGame && (
