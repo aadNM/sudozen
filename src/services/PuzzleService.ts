@@ -459,11 +459,16 @@ export const getDailyPuzzle = async (userId?: string, difficulty: Difficulty = '
       }
     }
 
-    // Find today's puzzle that player hasn't played with timeout
-    const filter = `created="${today}"${playedPuzzles.length ? ` && id!="${playedPuzzles.slice(0, 20).join('" && id!="')}"` : ''}`;
+    // FIXED: Add difficulty filter with proper quotes and use difficulty param
+    let filter = `created="${today}" && difficulty="${difficulty}"`;
+    
+    // Add exclusion for already played puzzles
+    if (playedPuzzles.length > 0) {
+      filter += ` && hash!="${playedPuzzles.slice(0, 20).join('" && hash!="')}"`;
+    }
     
     const queryPromise = pb.collection('daily_puzzles').getFirstListItem(filter, {
-      requestKey: `daily-${today}-${userId}-${Date.now()}`
+      requestKey: `daily-${today}-${difficulty}-${userId}-${Date.now()}`
     });
 
     const timeoutPromise = new Promise((_, reject) =>
@@ -471,10 +476,16 @@ export const getDailyPuzzle = async (userId?: string, difficulty: Difficulty = '
     );
 
     const record = await Promise.race([queryPromise, timeoutPromise]) as any;
+    
+    // Store the solution
+    if (record.solution) {
+      storage.setJSON('current_solution', record.solution);
+    }
+    
     return record as DailyPuzzleRecord;
   } catch (error) {
     // Fallback to generating a puzzle
-    logMessage('info', 'Generating fallback daily puzzle', { error: String(error) });
+    logMessage('info', 'Generating fallback daily puzzle', { error: String(error), difficulty });
     return await generateAndStorePuzzleOptimized(difficulty, userId, true);
   }
 };

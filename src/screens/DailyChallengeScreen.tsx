@@ -18,10 +18,10 @@ import { SudokuBanner } from '../hooks/ads/Banner';
 type PuzzleData = {
   board: number[][];
   solution: number[][];
-  difficulty: string;
+  difficulty: Difficulty;
 };
 
-const dailyDifficulties = ["Medium", "Hard", "Extreme"];
+const dailyDifficulties: Difficulty[] = ['Medium', 'Hard', 'Extreme'];
 
 type DailyChallengeScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'Daily Challenge'>;
@@ -181,8 +181,6 @@ const DailyChallengeScreen: React.FC<DailyChallengeScreenProps> = ({ navigation 
       </View>
     );
   }
-
-
 
   return (
     <View style={globalStyles.container}>
