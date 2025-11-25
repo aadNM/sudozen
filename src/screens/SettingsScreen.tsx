@@ -14,6 +14,7 @@ import {
   DeviceEventEmitter,
   Vibration
 } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { useGlobalStyles } from "../styles/Global.styles";
 import storage from "../utils/mmkvStorage";
@@ -27,11 +28,13 @@ import { GUEST_USER_KEY, GuestUser, PlayersRecord } from "../types/GameTypes";
 import { GuestUserService } from "../services/GuestUserService";
 import { logMessage } from "../utils/Logger";
 import { SudokuBanner } from "../hooks/ads/Banner";
+import { AppNavigationProp } from "../navigation/AppNavigator";
 
 const PRIVACY_POLICY_URL = "https://conquerdaily.com/sudozen-privacy-policy/";
 
 const SettingsScreen = () => {
   const { t } = useTranslation();
+  const navigation = useNavigation<AppNavigationProp>();
   const [difficulty, setDifficulty] = useState<string | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [languageModalVisible, setLanguageModalVisible] = useState(false);
@@ -233,6 +236,25 @@ const SettingsScreen = () => {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 40 }}>
+      {/* Player Stats Section */}
+      <View style={styles.sectionContainer}>
+        <View style={styles.sectionTitle}>
+          <Text style={typography.title}>{t('settings.playerStats', 'Player Stats')}</Text>
+        </View>
+
+        {/* View Statistics Button */}
+        <Pressable
+          style={[styles.settingRow, styles.lastSettingRow]}
+          onPress={() => navigation.navigate('Stats')}
+          accessibilityLabel={t('stats.viewStats', 'View Statistics')}
+        >
+          <View style={styles.settingLabelContainer}>
+            <Text style={styles.settingLabel}>{t('stats.viewStats', 'View Statistics')}</Text>
+          </View>
+          <Text style={styles.settingValue}>{'>'}</Text>
+        </Pressable>
+      </View>
+
       {/* Game Settings Section */}
       <View style={styles.sectionContainer}>
         <View style={styles.sectionTitle}>

@@ -128,8 +128,8 @@ export type GameBoardProps = {
 
 export type RootStackParamList = {
   Home: undefined;
-  Game: { 
-    puzzle?: number[][]; 
+  Game: {
+    puzzle?: number[][];
     isDailyChallenge?: boolean;
     difficulty?: Difficulty;
   };
@@ -138,6 +138,7 @@ export type RootStackParamList = {
   Leaderboard: undefined;
   Settings: undefined;
   UserCreation: undefined;
+  Stats: undefined;
 };
 
 export type PuzzleResponse = {

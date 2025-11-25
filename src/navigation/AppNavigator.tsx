@@ -8,6 +8,7 @@ import GameScreen from "../screens/GameScreen";
 import TutorialScreen from "../screens/TutorialScreen";
 import LeaderboardScreen from "../screens/LeaderboardScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import StatsScreen from "../screens/StatsScreen";
 import DailyChallengeScreen from "../screens/DailyChallengeScreen";
 import { RootStackParamList } from "../types/GameTypes";
 import { useTheme } from "../context/ThemeContext";
@@ -82,6 +83,14 @@ const AppNavigator = () => {
         component={SettingsScreen}
         options={{
           title: t('settings.title'),
+          headerBackTitle: t('common.back'),
+        }}
+      />
+      <Stack.Screen
+        name="Stats"
+        component={StatsScreen}
+        options={{
+          title: t('stats.title', 'Statistics'),
           headerBackTitle: t('common.back'),
         }}
       />
