@@ -226,8 +226,14 @@ const savePuzzleToDatabase = async (
   }
 
   try {
+    // Ensure we have a valid auth token before attempting to save
     if (!pb.authStore.token) {
       await initAuth();
+    }
+
+    // If still no token after init, don't attempt to save (user is not authenticated)
+    if (!pb.authStore.token || !pb.authStore.isValid) {
+      throw new Error('Cannot save puzzle: user not authenticated');
     }
 
     if (!board || !solution || !difficulty || !seed) {
@@ -594,18 +600,92 @@ export const updatePlayerSolvedPuzzles = async (
     return;
   }
 
+  // For fallback/generated puzzles, only track the hash (not the relation)
   if (puzzleId.startsWith('fallback-') || puzzleId.startsWith('generated-')) {
-    logMessage('info', 'Skipping solved puzzle update for fallback/generated puzzle', {
+    logMessage('info', 'Tracking locally-generated puzzle via hash only', {
       playerId,
       puzzleId,
+      puzzleHash,
       isDailyChallenge
     });
+
+    // Only update hash if provided - skip relation fields
+    if (puzzleHash) {
+      try {
+        await initDB();
+        await initAuth();
+
+        const player = await pb.collection('players').getOne(playerId, {
+          fields: 'solved_hashes'
+        });
+
+        const existingHashes = player.solved_hashes || [];
+        if (!existingHashes.includes(puzzleHash)) {
+          await pb.collection('players').update(playerId, {
+            solved_hashes: [...existingHashes, puzzleHash]
+          });
+          logMessage('info', 'Successfully tracked locally-generated puzzle hash', {
+            playerId,
+            puzzleHash
+          });
+        }
+      } catch (error) {
+        logMessage('warn', 'Failed to track locally-generated puzzle hash', {
+          error: String(error),
+          playerId,
+          puzzleHash
+        });
+      }
+    }
     return;
   }
 
   try {
     await initDB();
     await initAuth();
+
+    // Verify the puzzle exists in the database before updating player record
+    const collectionName = isDailyChallenge ? 'daily_puzzles' : 'puzzles';
+    let puzzleExists = false;
+
+    try {
+      await pb.collection(collectionName).getOne(puzzleId);
+      puzzleExists = true;
+    } catch (error) {
+      logMessage('warn', `Puzzle ID ${puzzleId} does not exist in ${collectionName} collection`, {
+        playerId,
+        puzzleId,
+        isDailyChallenge,
+        error: String(error)
+      });
+
+      // If the puzzle doesn't exist but we have a hash, at least track the hash
+      if (puzzleHash) {
+        try {
+          const player = await pb.collection('players').getOne(playerId, {
+            fields: 'solved_hashes'
+          });
+
+          const existingHashes = player.solved_hashes || [];
+          if (!existingHashes.includes(puzzleHash)) {
+            await pb.collection('players').update(playerId, {
+              solved_hashes: [...existingHashes, puzzleHash]
+            });
+            logMessage('info', 'Tracked puzzle hash even though puzzle ID not found in DB', {
+              playerId,
+              puzzleHash
+            });
+          }
+        } catch (hashError) {
+          logMessage('warn', 'Failed to track puzzle hash', {
+            error: String(hashError),
+            playerId,
+            puzzleHash
+          });
+        }
+      }
+      return;
+    }
 
     // Get current player data
     const player = await pb.collection('players').getOne(playerId, {
@@ -614,21 +694,23 @@ export const updatePlayerSolvedPuzzles = async (
 
     // Prepare update data
     const updateData: any = {};
-    
-    // Update the appropriate solved array
-    if (isDailyChallenge) {
-      const existingDailies = player.solved_dailies || [];
-      if (!existingDailies.includes(puzzleId)) {
-        updateData.solved_dailies = [...existingDailies, puzzleId];
-      }
-    } else {
-      const existingPuzzles = player.solved_puzzles || [];
-      if (!existingPuzzles.includes(puzzleId)) {
-        updateData.solved_puzzles = [...existingPuzzles, puzzleId];
+
+    // Update the appropriate solved array (only if puzzle exists in DB)
+    if (puzzleExists) {
+      if (isDailyChallenge) {
+        const existingDailies = player.solved_dailies || [];
+        if (!existingDailies.includes(puzzleId)) {
+          updateData.solved_dailies = [...existingDailies, puzzleId];
+        }
+      } else {
+        const existingPuzzles = player.solved_puzzles || [];
+        if (!existingPuzzles.includes(puzzleId)) {
+          updateData.solved_puzzles = [...existingPuzzles, puzzleId];
+        }
       }
     }
 
-    // Update hashes if provided
+    // Update hashes if provided (hashes are not relation fields, so no validation needed)
     if (puzzleHash) {
       const existingHashes = player.solved_hashes || [];
       if (!existingHashes.includes(puzzleHash)) {
