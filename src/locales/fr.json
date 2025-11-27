@@ -7,6 +7,7 @@
     "generatePassword": "Générer un mot de passe",
     "copyPassword": "Copier le mot de passe",
     "continue": "Continuer",
+    "retry": "Retry",
     "emailRequired": "L'email est requis",
     "invalidEmail": "Veuillez entrer une adresse email valide",
     "usernameRequired": "Le nom d'utilisateur est requis",
@@ -87,7 +88,8 @@
     "confirm": "Confirmer",
     "close": "Fermer",
     "backToGuest": "← Retour au mode invité",
-    "continue": "Continuer"
+    "continue": "Continuer",
+    "retry": "Retry"
   },
   "home": {
     "resumeGame": "Reprendre la partie",
@@ -95,6 +97,7 @@
     "dailyChallenge": "Défi quotidien",
     "howToPlay": "Comment jouer",
     "leaderboard": "Classement",
+    "stats": "Statistics",
     "learn": "Nouveau sur le Sudoku ? Commencez ici",
     "settings": "Paramètres",
     "guestMode": "Mode invité",
@@ -197,5 +200,32 @@
     "successMessage": "Votre compte et toutes vos données ont été supprimés. Merci d'avoir fait partie de SudoZen — nous espérons vous revoir lorsque vous serez prêt pour votre prochain défi !",
     "errorTitle": "Erreur",
     "errorMessage": "Une erreur s'est produite lors de la suppression de votre compte."
+  },
+  "stats": {
+    "title": "Vos statistiques",
+    "viewStats": "Voir les statistiques",
+    "loading": "Chargement des statistiques...",
+    "guestUserMessage": "Connectez-vous pour voir vos statistiques",
+    "errorLoading": "Échec du chargement des statistiques",
+    "noData": "Aucune statistique disponible",
+    "totalPuzzles": "Total de puzzles",
+    "highestScore": "Meilleur score",
+    "totalPlayTime": "Temps de jeu total",
+    "dailyChallenges": "Défis quotidiens",
+    "streaks": "Séries",
+    "current": "Actuelle",
+    "longest": "Plus longue",
+    "days": "jours",
+    "byDifficulty": "Par difficulté",
+    "solved": "Résolus",
+    "avgScore": "Score moy.",
+    "bestTime": "Meilleur temps",
+    "recentGames": "Jeux récents"
+  },
+  "difficulty": {
+    "easy": "Facile",
+    "medium": "Moyen",
+    "hard": "Difficile",
+    "extreme": "Extrême"
   }
 }

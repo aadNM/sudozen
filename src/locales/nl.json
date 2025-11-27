@@ -7,6 +7,7 @@
     "generatePassword": "Genereer Wachtwoord",
     "copyPassword": "Kopieer Wachtwoord",
     "continue": "Doorgaan",
+    "retry": "Retry",
     "emailRequired": "E-mail is verplicht",
     "invalidEmail": "Voer een geldig e-mailadres in",
     "usernameRequired": "Gebruikersnaam is verplicht",
@@ -87,7 +88,8 @@
     "close": "Sluiten",
     "confirm": "Bevestigen",
     "backToGuest": "← Terug naar Gastmodus",
-    "continue": "Doorgaan"
+    "continue": "Doorgaan",
+    "retry": "Retry"
   },
   "home": {
     "resumeGame": "Spel Hervatten",
@@ -95,6 +97,7 @@
     "dailyChallenge": "Dagelijkse Uitdaging",
     "howToPlay": "Hoe te Spelen",
     "leaderboard": "Klassement",
+    "stats": "Statistics",
     "learn": "Nieuw met Sudoku? Begin hier",
     "settings": "Instellingen",
     "guestMode": "Gastmodus",
@@ -197,5 +200,32 @@
     "successMessage": "Je account en alle gegevens zijn verwijderd. Bedankt dat je deel uitmaakte van SudoZen — we hopen je weer te zien wanneer je klaar bent voor je volgende uitdaging!",
     "errorTitle": "Fout",
     "errorMessage": "Er is iets misgegaan bij het verwijderen van je account."
+  },
+  "stats": {
+    "title": "Jouw statistieken",
+    "viewStats": "Statistieken bekijken",
+    "loading": "Statistieken laden...",
+    "guestUserMessage": "Meld je aan om je statistieken te bekijken",
+    "errorLoading": "Kan statistieken niet laden",
+    "noData": "Geen statistieken beschikbaar",
+    "totalPuzzles": "Totaal puzzels",
+    "highestScore": "Hoogste score",
+    "totalPlayTime": "Totale speeltijd",
+    "dailyChallenges": "Dagelijkse uitdagingen",
+    "streaks": "Reeksen",
+    "current": "Huidige",
+    "longest": "Langste",
+    "days": "dagen",
+    "byDifficulty": "Per moeilijkheidsgraad",
+    "solved": "Opgelost",
+    "avgScore": "Gem. score",
+    "bestTime": "Beste tijd",
+    "recentGames": "Recente spellen"
+  },
+  "difficulty": {
+    "easy": "Makkelijk",
+    "medium": "Gemiddeld",
+    "hard": "Moeilijk",
+    "extreme": "Extreem"
   }
 }

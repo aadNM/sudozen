@@ -62,9 +62,17 @@ export const getPlayerStats = async (playerId: string): Promise<PlayerStats | nu
       expand: 'puzzle_id'
     });
 
+    // Calculate total unique puzzles solved from all tracking methods
+    // This includes: DB puzzles (solved_puzzles), daily challenges (solved_dailies), and hash-only tracked puzzles (solved_hashes)
+    const uniquePuzzles = new Set([
+      ...(player.solved_puzzles || []),
+      ...(player.solved_dailies || []),
+      ...(player.solved_hashes || [])
+    ]);
+
     // Initialize stats
     const stats: PlayerStats = {
-      totalPuzzlesSolved: player.solved_puzzles?.length || 0,
+      totalPuzzlesSolved: uniquePuzzles.size,
       solvedByDifficulty: {
         Easy: 0,
         Medium: 0,
@@ -170,11 +178,21 @@ export const getPlayerStats = async (playerId: string): Promise<PlayerStats | nu
  */
 const calculateCurrentStreak = async (playerId: string): Promise<number> => {
   try {
-    // Get daily challenge scores sorted by date
-    const dailyScores = await pb.collection('scores').getList(1, 100, {
-      filter: `player_id="${playerId}" && puzzle_id~"daily"`,
-      sort: '-created'
-    });
+    // Try to get daily challenge scores using the is_daily_challenge flag
+    // If the field doesn't exist yet in the database, this will fail gracefully
+    let dailyScores;
+
+    try {
+      dailyScores = await pb.collection('scores').getList(1, 100, {
+        filter: `player_id="${playerId}" && is_daily_challenge=true`,
+        sort: '-created'
+      });
+    } catch (fieldError) {
+      // If is_daily_challenge field doesn't exist, return 0 for now
+      // This will work once the database schema is updated
+      logMessage('info', 'is_daily_challenge field not available yet in scores collection', { error: String(fieldError) });
+      return 0;
+    }
 
     if (dailyScores.items.length === 0) return 0;
 
@@ -182,10 +200,18 @@ const calculateCurrentStreak = async (playerId: string): Promise<number> => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
+    // Track which dates we've seen to avoid counting multiple completions on same day
+    const seenDates = new Set<string>();
+
     // Check each day backwards from today
     for (let i = 0; i < dailyScores.items.length; i++) {
       const scoreDate = new Date(dailyScores.items[i].created);
       scoreDate.setHours(0, 0, 0, 0);
+      const dateKey = scoreDate.toISOString().split('T')[0];
+
+      // Skip if we've already counted this date
+      if (seenDates.has(dateKey)) continue;
+      seenDates.add(dateKey);
 
       const daysDiff = Math.floor((today.getTime() - scoreDate.getTime()) / (1000 * 60 * 60 * 24));
 
@@ -208,22 +234,45 @@ const calculateCurrentStreak = async (playerId: string): Promise<number> => {
  */
 const calculateLongestStreak = async (playerId: string): Promise<number> => {
   try {
-    const dailyScores = await pb.collection('scores').getList(1, 365, {
-      filter: `player_id="${playerId}" && puzzle_id~"daily"`,
-      sort: '-created'
-    });
+    let dailyScores;
+
+    try {
+      dailyScores = await pb.collection('scores').getList(1, 365, {
+        filter: `player_id="${playerId}" && is_daily_challenge=true`,
+        sort: '-created'
+      });
+    } catch (fieldError) {
+      // If is_daily_challenge field doesn't exist, return 0 for now
+      logMessage('info', 'is_daily_challenge field not available yet in scores collection', { error: String(fieldError) });
+      return 0;
+    }
 
     if (dailyScores.items.length === 0) return 0;
 
-    let longestStreak = 0;
+    // Group scores by date (in case user completed daily challenge multiple times on same day)
+    const uniqueDates: string[] = [];
+    const seenDates = new Set<string>();
+
+    dailyScores.items.forEach((score: any) => {
+      const scoreDate = new Date(score.created);
+      scoreDate.setHours(0, 0, 0, 0);
+      const dateKey = scoreDate.toISOString().split('T')[0];
+
+      if (!seenDates.has(dateKey)) {
+        seenDates.add(dateKey);
+        uniqueDates.push(dateKey);
+      }
+    });
+
+    if (uniqueDates.length === 0) return 0;
+
+    let longestStreak = 1;
     let currentStreak = 1;
 
-    for (let i = 0; i < dailyScores.items.length - 1; i++) {
-      const currentDate = new Date(dailyScores.items[i].created);
-      const nextDate = new Date(dailyScores.items[i + 1].created);
-
-      currentDate.setHours(0, 0, 0, 0);
-      nextDate.setHours(0, 0, 0, 0);
+    // Calculate streaks from unique dates
+    for (let i = 0; i < uniqueDates.length - 1; i++) {
+      const currentDate = new Date(uniqueDates[i]);
+      const nextDate = new Date(uniqueDates[i + 1]);
 
       const daysDiff = Math.floor((currentDate.getTime() - nextDate.getTime()) / (1000 * 60 * 60 * 24));
 

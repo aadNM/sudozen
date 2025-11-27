@@ -85,6 +85,7 @@ export interface ScoreRecord extends RecordModel{
   time: string;
   date: string;
   puzzle_id: string | null;
+  is_daily_challenge: boolean;
 }
 
 export interface PuzzleRecord {

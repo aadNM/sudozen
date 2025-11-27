@@ -416,14 +416,15 @@ const GameScreen = () => {
     
     try {
       
-      try { 
+      try {
         // Save score with puzzle reference
         await saveScore({
           player_id: playerId || "anonymous",
           score,
           difficulty: difficulty || 'Medium',
           time: timeStr,
-          puzzle_id: currentPuzzleId
+          puzzle_id: currentPuzzleId,
+          is_daily_challenge: isDailyChallenge || false
         });
       } catch (error) {
         logMessage('error', "Failed to update score: ", { error: String(error)});

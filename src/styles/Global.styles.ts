@@ -3,6 +3,7 @@
 import { StyleSheet } from "react-native";
 import { useTheme } from '../context/ThemeContext';
 import { useTypography } from './Typography';
+import { SudokuBanner } from "../hooks/ads/Banner";
 
 export const useGlobalStyles = () => {
   const { theme } = useTheme();

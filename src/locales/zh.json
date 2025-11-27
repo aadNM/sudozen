@@ -7,6 +7,7 @@
     "generatePassword": "生成密码",
     "copyPassword": "复制密码",
     "continue": "继续",
+    "retry": "Retry",
     "emailRequired": "邮箱是必需的",
     "invalidEmail": "请输入有效的邮箱地址",
     "usernameRequired": "用户名是必需的",
@@ -87,7 +88,8 @@
     "close": "关闭",
     "confirm": "确认",
     "backToGuest": "← 返回访客模式",
-    "continue": "继续"
+    "continue": "继续",
+    "retry": "Retry"
   },
   "home": {
     "resumeGame": "继续游戏",
@@ -95,6 +97,7 @@
     "dailyChallenge": "每日挑战",
     "howToPlay": "如何游戏",
     "leaderboard": "排行榜",
+    "stats": "Statistics",
     "learn": "数独新手？从这里开始",
     "settings": "设置",
     "guestMode": "访客模式",
@@ -197,5 +200,32 @@
     "successMessage": "您的账户和所有数据已被移除。感谢您成为SudoZen的一部分——我们期待在您准备好迎接下一个挑战时再次见到您!",
     "errorTitle": "错误",
     "errorMessage": "删除账户时出现错误。"
+  },
+  "stats": {
+    "title": "您的统计",
+    "viewStats": "查看统计",
+    "loading": "加载统计中...",
+    "guestUserMessage": "登录以查看您的统计",
+    "errorLoading": "加载统计失败",
+    "noData": "无统计数据",
+    "totalPuzzles": "总谜题数",
+    "highestScore": "最高分",
+    "totalPlayTime": "总游戏时间",
+    "dailyChallenges": "每日挑战",
+    "streaks": "连胜",
+    "current": "当前",
+    "longest": "最长",
+    "days": "天",
+    "byDifficulty": "按难度",
+    "solved": "已解决",
+    "avgScore": "平均分",
+    "bestTime": "最佳时间",
+    "recentGames": "最近游戏"
+  },
+  "difficulty": {
+    "easy": "简单",
+    "medium": "中等",
+    "hard": "困难",
+    "extreme": "极难"
   }
 }

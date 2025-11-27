@@ -45,6 +45,7 @@
   },
   "settings": {
     "title": "Configuración",
+    "playerStats": "Estadísticas del jugador",
     "gameSettings": "Configuración del juego",
     "appearance": "Apariencia",
     "legal": "Legal",
@@ -88,7 +89,8 @@
     "confirm": "Confirmar",
     "close": "Cerrar",
     "backToGuest": "← Volver al modo invitado",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "retry": "Reintentar"
   },
   "home": {
     "resumeGame": "Continuar juego",
@@ -97,6 +99,7 @@
     "howToPlay": "Cómo jugar",
     "learn": "¿Nuevo en Sudoku? Empieza aquí",
     "leaderboard": "Clasificación",
+    "stats": "Estadísticas",
     "settings": "Configuración",
     "guestMode": "Modo invitado",
     "gamesLeft": "juegos restantes",
@@ -198,6 +201,33 @@
     "successMessage": "Tu cuenta y todos tus datos han sido eliminados. Gracias por ser parte de SudoZen — ¡esperamos verte de nuevo cuando estés listo para tu próximo desafío!",
     "errorTitle": "Error",
     "errorMessage": "Algo salió mal al eliminar tu cuenta."
+  },
+  "stats": {
+    "title": "Tus estadísticas",
+    "viewStats": "Ver estadísticas",
+    "loading": "Cargando estadísticas...",
+    "guestUserMessage": "Inicia sesión para ver tus estadísticas",
+    "errorLoading": "Error al cargar estadísticas",
+    "noData": "No hay estadísticas disponibles",
+    "totalPuzzles": "Total de puzzles",
+    "highestScore": "Puntuación más alta",
+    "totalPlayTime": "Tiempo total jugado",
+    "dailyChallenges": "Desafíos diarios",
+    "streaks": "Rachas",
+    "current": "Actual",
+    "longest": "Más larga",
+    "days": "días",
+    "byDifficulty": "Por dificultad",
+    "solved": "Resueltos",
+    "avgScore": "Punt. media",
+    "bestTime": "Mejor tiempo",
+    "recentGames": "Juegos recientes"
+  },
+  "difficulty": {
+    "easy": "Fácil",
+    "medium": "Medio",
+    "hard": "Difícil",
+    "extreme": "Extremo"
   }
 
 }

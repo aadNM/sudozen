@@ -45,6 +45,7 @@
   },
   "settings": {
     "title": "Settings",
+    "playerStats": "Player Stats",
     "gameSettings": "Game Settings",
     "appearance": "Appearance",
     "legal": "Legal",
@@ -87,7 +88,8 @@
     "close": "Close",
     "confirm": "Confirm",
     "backToGuest": "← Back to Guest Mode",
-    "continue": "Continue"
+    "continue": "Continue",
+    "retry": "Retry"
   },
   "home": {
     "resumeGame": "Resume Game",
@@ -95,6 +97,7 @@
     "dailyChallenge": "Daily Challenge",
     "howToPlay": "How to Play",
     "leaderboard": "Leaderboard",
+    "stats": "Statistics",
     "learn": "New to Sudoku? Start Here",
     "settings": "Settings",
     "guestMode": "Guest Mode",
@@ -197,5 +200,32 @@
     "successMessage": "Your account and all data have been removed. Thank you for being part of SudoZen — we hope to see you again when you're ready for your next challenge!",
     "errorTitle": "Error",
     "errorMessage": "Something went wrong while deleting your account."
+  },
+  "stats": {
+    "title": "Your Statistics",
+    "viewStats": "View Statistics",
+    "loading": "Loading statistics...",
+    "guestUserMessage": "Sign in to view your statistics",
+    "errorLoading": "Failed to load statistics",
+    "noData": "No statistics available",
+    "totalPuzzles": "Total Puzzles",
+    "highestScore": "Highest Score",
+    "totalPlayTime": "Total Play Time",
+    "dailyChallenges": "Daily Challenges",
+    "streaks": "Streaks",
+    "current": "Current",
+    "longest": "Longest",
+    "days": "days",
+    "byDifficulty": "By Difficulty",
+    "solved": "Solved",
+    "avgScore": "Avg Score",
+    "bestTime": "Best Time",
+    "recentGames": "Recent Games"
+  },
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "extreme": "Extreme"
   }
 }

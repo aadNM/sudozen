@@ -193,11 +193,11 @@ const HomeScreen = () => {
     },
     learn: {
       alignItems: 'center',
-      marginTop: 50,
+      marginTop: 40,
       marginBottom: 15,
     },
     learnLabelContainer: {
-      marginTop: 50,
+      marginBottom: 30,
     },
     learnLabel: {
       color: theme.colors.tertiary,
@@ -295,6 +295,18 @@ const HomeScreen = () => {
           labelStyle={{ color: theme.colors.primary }}
         >
           {t('home.leaderboard')}
+        </Button>
+      )}
+
+      {/* Disable Stats for guests */}
+      {!isGuestMode && (
+        <Button
+          mode="outlined"
+          onPress={() => navigation.navigate("Stats")}
+          style={[styles.button, styles.secondaryButton]}
+          labelStyle={{ color: theme.colors.primary }}
+        >
+          {t('home.stats')}
         </Button>
       )}
 

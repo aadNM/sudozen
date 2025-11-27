@@ -7,6 +7,7 @@
     "generatePassword": "Tengeneza Nenosiri",
     "copyPassword": "Nakili Nenosiri",
     "continue": "Endelea",
+    "retry": "Retry",
     "emailRequired": "Barua pepe inahitajika",
     "invalidEmail": "Tafadhali ingiza barua pepe sahihi",
     "usernameRequired": "Jina la mtumiaji linahitajika",
@@ -87,7 +88,8 @@
     "close": "Funga",
     "confirm": "Thibitisha",
     "backToGuest": "← Rudi kwa Hali ya Mgeni",
-    "continue": "Endelea"
+    "continue": "Endelea",
+    "retry": "Retry"
   },
   "home": {
     "resumeGame": "Endelea na Mchezo",
@@ -95,6 +97,7 @@
     "dailyChallenge": "Changamoto ya Kila Siku",
     "howToPlay": "Jinsi ya Kucheza",
     "leaderboard": "Orodha ya Washindi",
+    "stats": "Statistics",
     "learn": "Mpya kwenye Sudoku? Anza Hapa",
     "settings": "Mipangilio",
     "guestMode": "Hali ya Mgeni",
@@ -197,5 +200,32 @@
     "successMessage": "Akaunti yako na data yote yameondolewa. Asante kwa kuwa sehemu ya SudoZen — tunatumaini kukuona tena ukiwa tayari kwa chango lako lijalo!",
     "errorTitle": "Hitilafu",
     "errorMessage": "Kitu kilikwenda vibaya wakati wa kufuta akaunti yako."
+  },
+  "stats": {
+    "title": "Takwimu zako",
+    "viewStats": "Angalia takwimu",
+    "loading": "Inapakia takwimu...",
+    "guestUserMessage": "Ingia ili kuona takwimu zako",
+    "errorLoading": "Imeshindwa kupakia takwimu",
+    "noData": "Hakuna takwimu zinazopatikana",
+    "totalPuzzles": "Jumla ya michezo",
+    "highestScore": "Alama ya juu zaidi",
+    "totalPlayTime": "Muda wa kucheza",
+    "dailyChallenges": "Changamoto za kila siku",
+    "streaks": "Mfululizo",
+    "current": "Ya sasa",
+    "longest": "Ndefu zaidi",
+    "days": "siku",
+    "byDifficulty": "Kwa ugumu",
+    "solved": "Zimetatuliwa",
+    "avgScore": "Alama wastani",
+    "bestTime": "Muda bora",
+    "recentGames": "Michezo ya hivi karibuni"
+  },
+  "difficulty": {
+    "easy": "Rahisi",
+    "medium": "Wastani",
+    "hard": "Ngumu",
+    "extreme": "Ngumu sana"
   }
 }

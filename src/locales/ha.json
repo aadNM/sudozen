@@ -7,6 +7,7 @@
     "generatePassword": "Ƙirƙiri Kalmar sirri",
     "copyPassword": "Kwafi Kalmar sirri",
     "continue": "Ci gaba",
+    "retry": "Retry",
     "emailRequired": "Ana buƙatar imel",
     "invalidEmail": "Da fatan a shigar da ingantaccen adireshin imel",
     "usernameRequired": "Ana buƙatar sunan mai amfani",
@@ -87,7 +88,8 @@
     "close": "Rufe",
     "confirm": "Tabbatar",
     "backToGuest": "← Komawa zuwa Yanayin Baƙo",
-    "continue": "Ci gaba"
+    "continue": "Ci gaba",
+    "retry": "Retry"
   },
   "home": {
     "resumeGame": "Ci gaba da wasa",
@@ -95,6 +97,7 @@
     "dailyChallenge": "Kalubale na yau da kullum",
     "howToPlay": "Yadda ake wasa",
     "leaderboard": "Jerin Manyan Masu Wasa",
+    "stats": "Statistics",
     "learn": "Sabon shiga Sudoku? Fara nan",
     "settings": "Saituna",
     "guestMode": "Yanayin Baƙo",
@@ -197,5 +200,32 @@
     "successMessage": "An cire asusun ku da duk bayanan ku. Na gode da kasancewa cikin SudoZen - muna fatan za mu sake ganin ku lokacin da kuka shirya don kalubalenku na gaba!",
     "errorTitle": "Kuskure",
     "errorMessage": "Wani abu ya ɓace yayin share asusun ku."
+  },
+  "stats": {
+    "title": "Ƙididdigan ku",
+    "viewStats": "Duba ƙididdiga",
+    "loading": "Ana loda ƙididdiga...",
+    "guestUserMessage": "Shiga don ganin ƙididdigan ku",
+    "errorLoading": "An kasa loda ƙididdiga",
+    "noData": "Babu ƙididdiga",
+    "totalPuzzles": "Jimlar wasannin",
+    "highestScore": "Mafi girman maki",
+    "totalPlayTime": "Lokacin wasa",
+    "dailyChallenges": "Kalubalen yau da kullum",
+    "streaks": "Ci gaba",
+    "current": "Na yanzu",
+    "longest": "Mafi tsawo",
+    "days": "kwanaki",
+    "byDifficulty": "Ta wahala",
+    "solved": "An warware",
+    "avgScore": "Matsakaicin maki",
+    "bestTime": "Mafi kyawun lokaci",
+    "recentGames": "Wasanni na kwanan nan"
+  },
+  "difficulty": {
+    "easy": "Sauƙi",
+    "medium": "Matsakaici",
+    "hard": "Wuya",
+    "extreme": "Matsananci"
   }
 }

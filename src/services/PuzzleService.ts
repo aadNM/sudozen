@@ -160,12 +160,20 @@ const tryGetFromDatabase = async (
  * Async puzzle generation with better performance
  */
 const generateAndStorePuzzleOptimized = async (
-  difficulty: Difficulty, 
+  difficulty: Difficulty,
   userId?: string,
   isDailyPuzzle?: boolean
 ): Promise<PuzzleResponse> => {
-const seed = `${userId || 'guest'}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-  
+  // For daily puzzles, use a deterministic seed based on date and difficulty
+  // This ensures all users get the same puzzle for the same day
+  let seed: string;
+  if (isDailyPuzzle) {
+    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    seed = `daily-${today}-${difficulty}`;
+  } else {
+    seed = `${userId || 'guest'}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  }
+
   // Use async generation to prevent UI blocking
   const board = await generateSudokuAsync(difficulty, seed);
   const solution = deepCloneBoard(board);
@@ -337,6 +345,7 @@ export const saveScore = async (
     difficulty: Difficulty;
     time: string;
     puzzle_id?: string | null;
+    is_daily_challenge?: boolean;
   },
   retries = 3,
   delay = 1000
@@ -345,10 +354,18 @@ export const saveScore = async (
     throw new Error('Missing required score data');
   }
 
-  // Skip saving scores for fallback puzzles that don't exist in DB
+  // For fallback/generated puzzles, save the score but set puzzle_id to null
+  // This ensures stats (time, score by difficulty) are tracked even for locally-generated puzzles
   if (scoreData.puzzle_id && (scoreData.puzzle_id.startsWith('fallback-') || scoreData.puzzle_id.startsWith('generated-'))) {
-    logMessage('info', 'Skipping score save for fallback/generated puzzle', { puzzleId: scoreData.puzzle_id });
-    throw new Error('Cannot save score for fallback puzzle');
+    logMessage('info', 'Saving score for fallback/generated puzzle without puzzle_id reference', {
+      originalPuzzleId: scoreData.puzzle_id,
+      difficulty: scoreData.difficulty,
+      score: scoreData.score,
+      time: scoreData.time,
+      isDailyChallenge: scoreData.is_daily_challenge || false
+    });
+    // Set puzzle_id to null so we don't try to create a relation to a non-existent puzzle
+    scoreData.puzzle_id = null;
   }
 
   try {
@@ -444,7 +461,7 @@ export const getDailyPuzzle = async (userId?: string, difficulty: Difficulty = '
   const today = new Date().toISOString().split('T')[0];
 
   await Promise.all([initDB(), initAuth()]);
-  
+
   try {
     // Get player's played daily puzzles with timeout
     let playedPuzzles: string[] = [];
@@ -453,11 +470,11 @@ export const getDailyPuzzle = async (userId?: string, difficulty: Difficulty = '
         const playerPromise = pb.collection('players').getOne(userId, {
           fields: 'solved_hashes'
         });
-        
+
         const timeoutPromise = new Promise((_, reject) =>
           setTimeout(() => reject(new Error('Player fetch timeout')), 2000)
         );
-        
+
         const player = await Promise.race([playerPromise, timeoutPromise]) as any;
         playedPuzzles = player.solved_hashes || [];
       } catch (e) {
@@ -467,12 +484,12 @@ export const getDailyPuzzle = async (userId?: string, difficulty: Difficulty = '
 
     // FIXED: Add difficulty filter with proper quotes and use difficulty param
     let filter = `created="${today}" && difficulty="${difficulty}"`;
-    
+
     // Add exclusion for already played puzzles
     if (playedPuzzles.length > 0) {
       filter += ` && hash!="${playedPuzzles.slice(0, 20).join('" && hash!="')}"`;
     }
-    
+
     const queryPromise = pb.collection('daily_puzzles').getFirstListItem(filter, {
       requestKey: `daily-${today}-${difficulty}-${userId}-${Date.now()}`
     });
@@ -482,15 +499,34 @@ export const getDailyPuzzle = async (userId?: string, difficulty: Difficulty = '
     );
 
     const record = await Promise.race([queryPromise, timeoutPromise]) as any;
-    
+
     // Store the solution
     if (record.solution) {
       storage.setJSON('current_solution', record.solution);
     }
-    
+
     return record as DailyPuzzleRecord;
   } catch (error) {
-    // Fallback to generating a puzzle
+    // Fallback: Check if a daily puzzle already exists (without user's solved filter)
+    // This prevents creating duplicate puzzles if first user already generated one
+    try {
+      const existingPuzzle = await pb.collection('daily_puzzles').getFirstListItem(
+        `created="${today}" && difficulty="${difficulty}"`,
+        { requestKey: `daily-check-${today}-${difficulty}` }
+      );
+
+      if (existingPuzzle) {
+        logMessage('info', 'Using existing daily puzzle from database', { difficulty });
+        if (existingPuzzle.solution) {
+          storage.setJSON('current_solution', existingPuzzle.solution);
+        }
+        return existingPuzzle as DailyPuzzleRecord;
+      }
+    } catch (checkError) {
+      // No existing puzzle found, continue to generation
+    }
+
+    // Generate a new daily puzzle - all users will get the same puzzle due to deterministic seed
     logMessage('info', 'Generating fallback daily puzzle', { error: String(error), difficulty });
     return await generateAndStorePuzzleOptimized(difficulty, userId, true);
   }

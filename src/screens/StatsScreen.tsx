@@ -43,7 +43,7 @@ const StatsScreen = () => {
       const playerId = storage.getString('player_id');
 
       if (!playerId || playerId === 'guest' || playerId.startsWith('guest-')) {
-        setError(t('stats.guestUserMessage', 'Sign in to view your statistics'));
+        setError(t('stats.guestUserMessage'));
         return;
       }
 
@@ -52,11 +52,11 @@ const StatsScreen = () => {
       if (playerStats) {
         setStats(playerStats);
       } else {
-        setError(t('stats.errorLoading', 'Failed to load statistics'));
+        setError(t('stats.errorLoading'));
       }
     } catch (err) {
       logMessage('error', 'Failed to load stats:', { error: String(err) });
-      setError(t('stats.errorLoading', 'Failed to load statistics'));
+      setError(t('stats.errorLoading'));
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -91,7 +91,7 @@ const StatsScreen = () => {
       <SafeAreaView style={[globalStyles.container, styles.centerContent, { backgroundColor: theme.colors.background }]}>
         <ActivityIndicator size="large" color={theme.colors.primary} />
         <Text style={[typography.body, { color: theme.colors.text, marginTop: 16 }]}>
-          {t('stats.loading', 'Loading statistics...')}
+          {t('stats.loading')}
         </Text>
       </SafeAreaView>
     );
@@ -114,7 +114,7 @@ const StatsScreen = () => {
           onPress={() => loadStats()}
         >
           <Text style={[typography.button, { color: theme.colors.onPrimary }]}>
-            {t('common.retry', 'Retry')}
+            {t('common.retry')}
           </Text>
         </Pressable>
       </SafeAreaView>
@@ -125,7 +125,7 @@ const StatsScreen = () => {
     return (
       <SafeAreaView style={[globalStyles.container, styles.centerContent, { backgroundColor: theme.colors.background }]}>
         <Text style={[typography.body, { color: theme.colors.text }]}>
-          {t('stats.noData', 'No statistics available')}
+          {t('stats.noData')}
         </Text>
       </SafeAreaView>
     );
@@ -144,17 +144,17 @@ const StatsScreen = () => {
         }
       >
         {/* Header */}
-        <View style={styles.header}>
+        {/* <View style={styles.header}>
           <Text style={[typography.h1, { color: theme.colors.text }]}>
-            {t('stats.title', 'Your Statistics')}
+            {t('stats.title')}
           </Text>
-        </View>
+        </View> */}
 
         {/* Overview Cards */}
         <View style={styles.cardsRow}>
           <View style={[styles.card, { backgroundColor: theme.colors.surface }]}>
             <Text style={[typography.caption, { color: theme.colors.text }]}>
-              {t('stats.totalPuzzles', 'Total Puzzles')}
+              {t('stats.totalPuzzles')}
             </Text>
             <Text style={[typography.h1, { color: theme.colors.primary }]}>
               {stats.totalPuzzlesSolved}
@@ -163,7 +163,7 @@ const StatsScreen = () => {
 
           <View style={[styles.card, { backgroundColor: theme.colors.surface }]}>
             <Text style={[typography.caption, { color: theme.colors.text }]}>
-              {t('stats.highestScore', 'Highest Score')}
+              {t('stats.highestScore')}
             </Text>
             <Text style={[typography.h1, { color: theme.colors.primary }]}>
               {stats.highestScore}
@@ -174,7 +174,7 @@ const StatsScreen = () => {
         <View style={styles.cardsRow}>
           <View style={[styles.card, { backgroundColor: theme.colors.surface }]}>
             <Text style={[typography.caption, { color: theme.colors.text }]}>
-              {t('stats.totalPlayTime', 'Total Play Time')}
+              {t('stats.totalPlayTime')}
             </Text>
             <Text style={[typography.h2, { color: theme.colors.text }]}>
               {stats.totalPlayTime}
@@ -183,7 +183,7 @@ const StatsScreen = () => {
 
           <View style={[styles.card, { backgroundColor: theme.colors.surface }]}>
             <Text style={[typography.caption, { color: theme.colors.text}]}>
-              {t('stats.dailyChallenges', 'Daily Challenges')}
+              {t('stats.dailyChallenges')}
             </Text>
             <Text style={[typography.h2, { color: theme.colors.text }]}>
               {stats.dailyChallengesSolved}
@@ -194,23 +194,23 @@ const StatsScreen = () => {
         {/* Streaks */}
         <View style={[styles.section, { backgroundColor: theme.colors.surface }]}>
           <Text style={[typography.h3, { color: theme.colors.text, marginBottom: 16 }]}>
-            {t('stats.streaks', 'Streaks')}
+            {t('stats.streaks')}
           </Text>
           <View style={styles.streakRow}>
             <View style={styles.streakItem}>
               <Text style={[typography.body, { color: theme.colors.text }]}>
-                {t('stats.current', 'Current')}
+                {t('stats.current')}
               </Text>
               <Text style={[typography.h2, { color: '#4CAF50' }]}>
-                {stats.currentStreak} {t('stats.days', 'days')}
+                {stats.currentStreak} {t('stats.days')}
               </Text>
             </View>
             <View style={styles.streakItem}>
               <Text style={[typography.body, { color: theme.colors.text }]}>
-                {t('stats.longest', 'Longest')}
+                {t('stats.longest')}
               </Text>
               <Text style={[typography.h2, { color: '#FF9800' }]}>
-                {stats.longestStreak} {t('stats.days', 'days')}
+                {stats.longestStreak} {t('stats.days')}
               </Text>
             </View>
           </View>
@@ -219,7 +219,7 @@ const StatsScreen = () => {
         {/* By Difficulty */}
         <View style={[styles.section, { backgroundColor: theme.colors.surface }]}>
           <Text style={[typography.h3, { color: theme.colors.text, marginBottom: 16 }]}>
-            {t('stats.byDifficulty', 'By Difficulty')}
+            {t('stats.byDifficulty')}
           </Text>
 
           {(['Easy', 'Medium', 'Hard', 'Extreme'] as Difficulty[]).map((difficulty) => (
@@ -232,14 +232,14 @@ const StatsScreen = () => {
                   ]}
                 />
                 <Text style={[typography.h4, { color: theme.colors.text, flex: 1 }]}>
-                  {t(`difficulty.${difficulty.toLowerCase()}`, difficulty)}
+                  {t(`difficulty.${difficulty.toLowerCase()}`)}
                 </Text>
               </View>
 
               <View style={styles.difficultyStats}>
                 <View style={styles.statItem}>
                   <Text style={[typography.caption, { color: theme.colors.text }]}>
-                    {t('stats.solved', 'Solved')}
+                    {t('stats.solved')}
                   </Text>
                   <Text style={[typography.body, { color: theme.colors.text }]}>
                     {stats.solvedByDifficulty[difficulty]}
@@ -248,7 +248,7 @@ const StatsScreen = () => {
 
                 <View style={styles.statItem}>
                   <Text style={[typography.caption, { color: theme.colors.text }]}>
-                    {t('stats.avgScore', 'Avg Score')}
+                    {t('stats.avgScore')}
                   </Text>
                   <Text style={[typography.body, { color: theme.colors.text }]}>
                     {stats.averageScoreByDifficulty[difficulty] || '--'}
@@ -257,7 +257,7 @@ const StatsScreen = () => {
 
                 <View style={styles.statItem}>
                   <Text style={[typography.caption, { color: theme.colors.text }]}>
-                    {t('stats.bestTime', 'Best Time')}
+                    {t('stats.bestTime')}
                   </Text>
                   <Text style={[typography.body, { color: theme.colors.text }]}>
                     {stats.bestTimeByDifficulty[difficulty]}
@@ -272,7 +272,7 @@ const StatsScreen = () => {
         {stats.recentGames.length > 0 && (
           <View style={[styles.section, { backgroundColor: theme.colors.surface }]}>
             <Text style={[typography.h3, { color: theme.colors.text, marginBottom: 16 }]}>
-              {t('stats.recentGames', 'Recent Games')}
+              {t('stats.recentGames')}
             </Text>
 
             {stats.recentGames.slice(0, 5).map((game, index) => (
@@ -285,7 +285,7 @@ const StatsScreen = () => {
                 />
                 <View style={styles.gameInfo}>
                   <Text style={[typography.body, { color: theme.colors.text }]}>
-                    {t(`difficulty.${game.difficulty.toLowerCase()}`, game.difficulty)}
+                    {t(`difficulty.${game.difficulty.toLowerCase()}`)}
                   </Text>
                   <Text style={[typography.caption, { color: theme.colors.text }]}>
                     {new Date(game.created).toLocaleDateString()}
@@ -310,38 +310,44 @@ const StatsScreen = () => {
 
 const styles = StyleSheet.create({
   scrollContent: {
-    padding: 16,
-    paddingBottom: 32,
+    paddingHorizontal: 10,
+    width: '90%',
   },
   centerContent: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   header: {
-    marginBottom: 24,
+    marginBottom: 16,
   },
   cardsRow: {
     flexDirection: 'row',
-    gap: 12,
-    marginBottom: 12,
+    gap: 10,
+    marginBottom: 15,
+    minWidth: '90%',
   },
   card: {
     flex: 1,
-    padding: 16,
     borderRadius: 12,
     alignItems: 'center',
+    justifyContent: 'space-evenly',
+    minHeight: 80,
+    minWidth: 80,
   },
   section: {
-    padding: 16,
+    padding: 20,
     borderRadius: 12,
     marginBottom: 16,
   },
   streakRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+    gap: 24,
   },
   streakItem: {
     alignItems: 'center',
+    flex: 1,
   },
   difficultyRow: {
     marginBottom: 20,
@@ -349,7 +355,7 @@ const styles = StyleSheet.create({
   difficultyHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: 12,
   },
   difficultyIndicator: {
     width: 4,
@@ -359,11 +365,13 @@ const styles = StyleSheet.create({
   },
   difficultyStats: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     paddingLeft: 16,
+    gap: 16,
   },
   statItem: {
     alignItems: 'center',
+    flex: 1,
   },
   gameRow: {
     flexDirection: 'row',
