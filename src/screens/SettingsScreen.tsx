@@ -228,6 +228,11 @@ const SettingsScreen = () => {
     icon: {
       marginRight: 8,
     },
+    versionText: {
+      textAlign: 'center',
+      color: theme.colors.secondary,
+      marginTop: 16,
+    },
   });
 
   return (
@@ -469,6 +474,7 @@ const SettingsScreen = () => {
         </AnimatedOverlay>
       )}
       <SudokuBanner />
+      <Text style={styles.versionText}>Version 1.0.6</Text>
     </ScrollView>
   );
 };

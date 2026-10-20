@@ -45,13 +45,11 @@ class AsyncAuthStore extends LocalAuthStore {
 }
 
 const getBaseUrl = () => {
-  const isDev = false;//typeof __DEV__ !== 'undefined' && __DEV__;
-  if (isDev) {
-    if (Platform.OS === 'android') return 'http://10.0.2.2:8090';
-    if (Platform.OS === 'ios') return PB_URL;
-    return PB_URL;
+  // On the Android emulator, 127.0.0.1 is the emulator itself; 10.0.2.2 is the host machine.
+  if (Platform.OS === 'android' && /127\.0\.0\.1|localhost/.test(PB_URL)) {
+    return PB_URL.replace(/127\.0\.0\.1|localhost/, '10.0.2.2');
   }
-  return 'https://pocketbase.example.com/';
+  return PB_URL;
 };
 
 const pb = new PocketBase(getBaseUrl(), new AsyncAuthStore());

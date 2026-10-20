@@ -2,7 +2,8 @@
 
 import { Platform } from 'react-native';
 
-const LOG_ENDPOINT = 'https://logs.example.com/log';
+// Optional remote log collector. When unset, logs only go to the console.
+const LOG_ENDPOINT = process.env.EXPO_PUBLIC_LOG_ENDPOINT || '';
 
 export async function logMessage(level: 'debug' | 'info' | 'warn' | 'error', message: string, extra: Record<string, any> = {}) {
   const payload = {
@@ -12,6 +13,11 @@ export async function logMessage(level: 'debug' | 'info' | 'warn' | 'error', mes
     timestamp: new Date().toISOString(),
     ...extra,
   };
+
+  if (!LOG_ENDPOINT) {
+    if (__DEV__) console.log(`[${level}] ${message}`, extra);
+    return;
+  }
 
   try {
     await fetch(LOG_ENDPOINT, {
