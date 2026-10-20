@@ -112,7 +112,7 @@ You can also do this by hand in the PocketBase dashboard: *Settings → Mail set
 
 ### 4. AdMob (release builds only)
 
-Development builds always use Google's test ad units. The AdMob app IDs in `app.json` and the ad unit IDs in [src/utils/ads.ts](src/utils/ads.ts) belong to the original app. To ship, create an app and ad units in [AdMob](https://admob.google.com/) and replace those IDs.
+Development builds always use Google's test ad units. The AdMob app IDs in `app.json` and the ad unit IDs in [src/utils/ads.ts](src/utils/ads.ts) are not yours (they're Google's sample app IDs and placeholder unit IDs in the public repo). To ship, create an app and ad units in [AdMob](https://admob.google.com/) and replace those IDs.
 
 ### 5. EAS builds (optional)
 

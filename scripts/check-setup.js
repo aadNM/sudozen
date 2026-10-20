@@ -29,8 +29,8 @@ if (!exists('.env')) {
 }
 
 const appJson = fs.readFileSync(path.join(root, 'app.json'), 'utf8');
-if (appJson.includes('ca-app-pub-0000000000000000')) {
-  warnings.push('app.json still has the original AdMob app IDs. Fine for development; replace them before releasing.');
+if (/ca-app-pub-(0000000000000000|3940256099942544)~/.test(appJson)) {
+  warnings.push('app.json has AdMob app IDs that are not yours. Fine for development; replace them before releasing.');
 }
 
 warnings.forEach((w) => console.warn(`⚠️  ${w}`));
