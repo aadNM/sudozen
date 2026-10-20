@@ -15,6 +15,14 @@ For a full write-up of the architecture, features and decisions behind the proje
   <img src="src/assets/SudoZen-featured.png" alt="SudoZen screenshots" width="720" />
 </p>
 
+## Why I built this
+
+SudoZen was my way of learning the whole app development process, from an empty project to apps live on the App Store and Google Play, and everything in between: backend, auth, email, ads, store builds and releases.
+
+I started with the bare React Native CLI and switched to Expo partway through. Most of the reason was CocoaPods and Xcode: pod install failures, build settings and signing issues that took far more time than the app itself. Expo's prebuild and EAS Build made native builds predictable. Another lesson I kept learning the hard way: after a `brew upgrade`, check your Node version, because a silently upgraded (or broken) Node install will break the toolchain in confusing ways.
+
+It was tiring at times, but it taught me more than any tutorial could.
+
 ## Features
 
 - **Four difficulties:** Easy, Medium, Hard, Extreme, each with its own hint and check limits
