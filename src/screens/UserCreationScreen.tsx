@@ -340,11 +340,11 @@ export default function UserCreationScreen({ onCreated, isGuestUpgrade = false }
     try {
       const [emailCheck, usernameCheck] = await Promise.allSettled([
         Promise.race([
-          pb.collection('players').getFirstListItem<PlayersRecord>(`email = "${email}"`),
+          pb.collection('players').getFirstListItem<PlayersRecord>(pb.filter('email = {:email}', { email })),
           new Promise((_, reject) => setTimeout(() => reject(new Error('Email check timeout')), 3000))
         ]),
         Promise.race([
-          pb.collection('players').getFirstListItem<PlayersRecord>(`username = "${username}"`),
+          pb.collection('players').getFirstListItem<PlayersRecord>(pb.filter('username = {:username}', { username })),
           new Promise((_, reject) => setTimeout(() => reject(new Error('Username check timeout')), 3000))
         ])
       ]);

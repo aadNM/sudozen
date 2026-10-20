@@ -19,6 +19,8 @@ type PuzzleData = {
   board: number[][];
   solution: number[][];
   difficulty: Difficulty;
+  id?: string;
+  hash?: string;
 };
 
 const dailyDifficulties: Difficulty[] = ['Medium', 'Hard', 'Extreme'];
@@ -87,8 +89,11 @@ const DailyChallengeScreen: React.FC<DailyChallengeScreenProps> = ({ navigation 
       setIsLoading(true);
       setError(null);
 
-      const randomDifficulty = dailyDifficulties[Math.floor(Math.random() * dailyDifficulties.length)] as Difficulty;
-      const dailyPuzzle = await getDailyPuzzle(storage.getString('player_id'), randomDifficulty);
+      // Pick the difficulty from the date so every player gets the same daily puzzle
+      const today = new Date().toISOString().split('T')[0];
+      const dayNumber = Math.floor(new Date(today).getTime() / 86400000);
+      const dailyDifficulty = dailyDifficulties[dayNumber % dailyDifficulties.length];
+      const dailyPuzzle = await getDailyPuzzle(storage.getString('player_id'), dailyDifficulty);
 
       if (!dailyPuzzle) {
         throw new Error('Failed to generate puzzle');
@@ -97,7 +102,9 @@ const DailyChallengeScreen: React.FC<DailyChallengeScreenProps> = ({ navigation 
       setPuzzleData({
         board: dailyPuzzle.board,
         solution: dailyPuzzle.solution || [],
-        difficulty: dailyPuzzle.difficulty
+        difficulty: dailyPuzzle.difficulty,
+        id: dailyPuzzle.id,
+        hash: dailyPuzzle.hash
       });
     } catch (err) {
       logMessage('error', 'Error loading daily puzzle:',{ error: String(err)});
@@ -131,6 +138,7 @@ const DailyChallengeScreen: React.FC<DailyChallengeScreenProps> = ({ navigation 
     storage.set('isDailyChallenge', true);
     storage.set('isNewDailyChallenge', true);
     storage.set('dailyChallengeDifficulty', puzzleData.difficulty);
+    storage.setJSON('dailyChallengePuzzle', puzzleData);
     Vibration.vibrate(100);
 
     navigation.navigate('Game', {

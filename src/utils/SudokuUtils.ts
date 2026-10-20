@@ -147,6 +147,8 @@ const createSeededRNG = (seed: string): () => number => {
   for (let i = 0; i < seed.length; i++) {
     a = (a * 31 + seed.charCodeAt(i)) % 2147483647;
   }
+  // A seed of 0 would make the generator return a negative number forever
+  if (a === 0) a = 1;
   
   return () => {
     a = (a * 16807) % 2147483647;
@@ -179,7 +181,8 @@ const generateSeededBoard = (seed: string): number[][] => {
 export const generateSudoku = (difficulty: Difficulty, seed: string): number[][] => {
   const cacheKey = `${difficulty}-${seed}`;
   if (puzzleCache.has(cacheKey)) {
-    return puzzleCache.get(cacheKey)!;
+    // Return a copy so callers can't modify the cached puzzle
+    return deepCloneBoard(puzzleCache.get(cacheKey)!);
   }
 
   // Clean cache if too large (remove oldest entries)
@@ -244,7 +247,7 @@ export const generateSudoku = (difficulty: Difficulty, seed: string): number[][]
   }
 
   puzzleCache.set(cacheKey, puzzle);
-  return puzzle;
+  return deepCloneBoard(puzzle);
 };
 
 /**

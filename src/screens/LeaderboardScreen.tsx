@@ -106,6 +106,10 @@ const LeaderboardScreen = () => {
     fetchScores();
   }, [selectedDifficulty, selectedRange]);
 
+  // PocketBase stores dates as "YYYY-MM-DD HH:MM:SS.sssZ" and compares them as text,
+  // so ISO strings (with a "T") must use the same format.
+  const toPbDate = (date: Date) => date.toISOString().replace('T', ' ');
+
   // Timezone-aware date filtering
   const getDateRangeFilter = (range: TimeRange): string => {
     const now = new Date();
@@ -115,27 +119,24 @@ const LeaderboardScreen = () => {
 
     switch (range) {
       case "daily":
-        const yesterdayMidnight = new Date(localMidnightStart);
-        yesterdayMidnight.setDate(yesterdayMidnight.getDate() - 1);
-
         const tomorrowMidnight = new Date(localMidnightStart);
         tomorrowMidnight.setDate(tomorrowMidnight.getDate() + 1);
 
-        const start = yesterdayMidnight.toISOString();
-        const end = tomorrowMidnight.toISOString();
+        const start = toPbDate(localMidnightStart);
+        const end = toPbDate(tomorrowMidnight);
 
         return `created >= '${start}' && created < '${end}'`;
         
       case "weekly": {
         const weeklyStart = new Date(localMidnightStart);
         weeklyStart.setDate(localMidnightStart.getDate() - 6);
-        return `created >= '${weeklyStart.toISOString()}'`;
+        return `created >= '${toPbDate(weeklyStart)}'`;
       }
 
       case "monthly": {
         const monthlyStart = new Date(localMidnightStart);
         monthlyStart.setDate(1);
-        return `created >= '${monthlyStart.toISOString()}'`;
+        return `created >= '${toPbDate(monthlyStart)}'`;
       }
 
       default:
@@ -154,7 +155,6 @@ const LeaderboardScreen = () => {
 
       const allScores = await getLeaderboard(50, 1, '-score,-updated', filter);
       
-      const timezoneOffset = new Date().getTimezoneOffset() * 60000;
       const mappedScores: ScoreEntry[] = allScores.items.map((entry) => ({
         id: entry.id,
         player: entry.expand?.player_id?.username ?? 'Anonymous',
@@ -162,8 +162,9 @@ const LeaderboardScreen = () => {
         score: entry.score,
         difficulty: entry.difficulty,
         time: entry.time,
-        date: entry.date,
-        localDate: new Date(new Date(entry.date).getTime() - timezoneOffset).toLocaleString(),
+        // scores have no `date` field; use the record's creation time
+        date: entry.created,
+        localDate: new Date(entry.created.replace(' ', 'T')).toLocaleString(),
       }));
 
       setScores(mappedScores.slice(0, 20));

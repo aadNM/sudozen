@@ -15,10 +15,16 @@ import { clearPuzzleCaches, getPuzzle, saveScore, updatePlayerSolvedPuzzles } fr
 import { getRelevantHint } from "../services/StrategyService";
 import { useGameScreenStyles } from "../styles/GameScreen.styles";
 import { useGlobalStyles } from "../styles/Global.styles";
-import { Difficulty, GameState, getMaxChecks, getMaxHints, GRID_SIZE, HintModalState, MAX_TIME_MINUTES, SavedGameData } from "../types/GameTypes";
+import { Difficulty, GameState, getMaxChecks, getMaxHints, GRID_SIZE, HintModalState, MAX_TIME_MINUTES, PuzzleResponse, SavedGameData } from "../types/GameTypes";
 import { logMessage } from "../utils/Logger";
 import storage from "../utils/mmkvStorage";
-import { generateSudoku } from "../utils/SudokuUtils";
+import { deepCloneBoard, generateSudoku, isPuzzleSolved, solveSudoku } from "../utils/SudokuUtils";
+
+const solveCopy = (board: number[][]): number[][] => {
+  const solution = deepCloneBoard(board);
+  solveSudoku(solution);
+  return solution;
+};
 
 
 
@@ -120,11 +126,12 @@ const GameScreen = () => {
     totalSeconds,
     hintsUsed,
     currentPuzzleId,
+    currentPuzzleHash,
     checksUsed,
     notes,
     extraHints,
     extraChecks
-  }), [board, initialBoard, difficulty, totalSeconds, hintsUsed, currentPuzzleId, checksUsed, notes, extraHints, extraChecks]);
+  }), [board, initialBoard, difficulty, totalSeconds, hintsUsed, currentPuzzleId, currentPuzzleHash, checksUsed, notes, extraHints, extraChecks]);
 
   const selectDifficulty = () => {
     setModalVisible(true);
@@ -149,19 +156,26 @@ const GameScreen = () => {
       setIsTimeExpired(false);
       setNotes("");
       const userId = await storage.getString('player_id') || 'guest';
-      const { board, id, hash, solution } = await getPuzzle(newDifficulty, userId);
+      // Daily challenge: play the puzzle picked on the Daily Challenge screen
+      const dailyPuzzle = storage.getBoolean('isDailyChallenge')
+        ? storage.getJSON<PuzzleResponse>('dailyChallengePuzzle')
+        : null;
+      const { board, id, hash, solution } = dailyPuzzle?.difficulty === newDifficulty
+        ? dailyPuzzle
+        : await getPuzzle(newDifficulty, userId);
       
       if (!board || board.length !== GRID_SIZE) {
         throw new Error('Invalid puzzle generated');
       }
       
-      setBoard(board);
-      setInitialBoard(board.map(row => [...row]));
+      setBoard(deepCloneBoard(board));
+      setInitialBoard(deepCloneBoard(board));
       setCurrentPuzzleId(id || null);
       setCurrentPuzzleHash(hash || null);
       setTotalSeconds(0);
       setHintsUsed(0);
-      storage.setJSON('current_solution', solution);
+      setChecksUsed({ 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 });
+      storage.setJSON('current_solution', solution?.length === GRID_SIZE ? solution : solveCopy(board));
       storage.set('hasActiveGame', true);
       setExtraChecks(0);
       setExtraHints(0);
@@ -171,9 +185,16 @@ const GameScreen = () => {
       logMessage('error', 'Puzzle loading failed:', { error: String(error)});
       Alert.alert('Error', 'Failed to load puzzle. Please try again.');
       // Emergency fallback
-      const fallbackBoard = generateSudoku(newDifficulty, 'fallback');
-      setBoard(fallbackBoard);
-      setInitialBoard(fallbackBoard.map(row => [...row]));
+      const fallbackBoard = generateSudoku(newDifficulty, `fallback-${Date.now()}`);
+      setBoard(deepCloneBoard(fallbackBoard));
+      setInitialBoard(deepCloneBoard(fallbackBoard));
+      setCurrentPuzzleId(null);
+      setCurrentPuzzleHash(null);
+      setTotalSeconds(0);
+      setHintsUsed(0);
+      storage.setJSON('current_solution', solveCopy(fallbackBoard));
+      storage.set('hasActiveGame', true);
+      setRunning(true);
     } finally {
       setIsLoading(false);
     }
@@ -241,7 +262,7 @@ const GameScreen = () => {
           value: hint.value,
           strategy: hint.strategy
         });
-        setHintsUsed(hintsUsed + 1);
+        setHintsUsed(prev => prev + 1);
       } else {
         Alert.alert(
           `Hint: ${hint.strategy.title}`, 
@@ -263,13 +284,18 @@ const GameScreen = () => {
 
     Vibration.vibrate(80);
     // Fill the cell with the hinted value
-    const newBoard = [...board];
+    const newBoard = deepCloneBoard(board);
     newBoard[hintModal.position.row][hintModal.position.col] = hintModal.value;
     setBoard(newBoard);
     
-    // Track usage and close modal
-    setHintsUsed(hintsUsed + 1);
+    // The hint was already counted when it was shown in getHint
     setHintModal({ ...hintModal, visible: false });
+
+    // The hint may have filled the last empty cell
+    if (newBoard.every(row => row.every(cell => cell !== 0))
+      && isPuzzleSolved(newBoard, storage.getJSON<number[][]>('current_solution'))) {
+      handleGameComplete();
+    }
   };
 
   const showHintLimitReached = () => {
@@ -327,6 +353,10 @@ const GameScreen = () => {
 
     let rawScore = BASE_SCORE - timePenalty - hintPenalty - checkPenalty;
 
+    // Reset bonuses left over from the previous game
+    setZeroHelpBonus(0);
+    setTimeBonus(0);
+
     // Apply bonuses
     // Perfect game bonus (no hints/checks)
     if (hintsUsed === 0 && totalChecks === 0) {
@@ -342,7 +372,7 @@ const GameScreen = () => {
       Extreme: 20 * 60 
     }[difficulty || "Medium"];
     
-    if (totalSeconds <= parTime * 1.1) {
+    if (totalSeconds < parTime) {
       const timeBonus = (1 - totalSeconds/parTime) * BASE_SCORE * 0.1;
       setTimeBonus(timeBonus);
       rawScore += timeBonus;
@@ -357,6 +387,7 @@ const GameScreen = () => {
     const lastPlayed = new Date(storage.getString('last_played_date') || '').toDateString();
 
     let streakDays = storage.getNumber('current_streak') || 1;
+    setStreakBonus(0);
 
     if (streakDays > 7) {
       streakDays = 1;
@@ -392,9 +423,7 @@ const GameScreen = () => {
       ? Math.floor(currentScore * 1.5)
       : currentScore;
 
-    storage.getBoolean('isDailyChallenge')? 
-      setChallengeBonus((currentScore * 1.5) - currentScore)
-      : setChallengeBonus(0);
+    setChallengeBonus(finalScore - currentScore);
 
     return finalScore;
   };
@@ -416,22 +445,26 @@ const GameScreen = () => {
     
     try {
       
-      try {
-        // Save score with puzzle reference
-        await saveScore({
-          player_id: playerId || "anonymous",
-          score,
-          difficulty: difficulty || 'Medium',
-          time: timeStr,
-          puzzle_id: currentPuzzleId,
-          is_daily_challenge: isDailyChallenge || false
-        });
-      } catch (error) {
-        logMessage('error', "Failed to update score: ", { error: String(error)});
+      // Guests have no PocketBase account, so their scores can't be saved
+      const isRegistered = !!playerId && playerId !== 'guest' && !playerId.startsWith('guest-');
+      if (isRegistered) {
+        try {
+          // Save score with puzzle reference
+          await saveScore({
+            player_id: playerId,
+            score,
+            difficulty: difficulty || 'Medium',
+            time: timeStr,
+            puzzle_id: currentPuzzleId,
+            is_daily_challenge: isDailyChallenge || false
+          });
+        } catch (error) {
+          logMessage('error', "Failed to update score: ", { error: String(error)});
+        }
       }
 
       // Update player's solved puzzles if logged in and puzzle has ID
-      if (playerId && playerId !== 'guest' && currentPuzzleId) {
+      if (isRegistered && currentPuzzleId) {
         try {
           await updatePlayerSolvedPuzzles(
             playerId,
@@ -520,6 +553,7 @@ const GameScreen = () => {
 
     setHintsUsed(savedState.hintsUsed ?? 0);
     setCurrentPuzzleId(savedState.currentPuzzleId ?? null);
+    setCurrentPuzzleHash(savedState.currentPuzzleHash ?? null);
 
     setChecksUsed(
       savedState.checksUsed ?? 

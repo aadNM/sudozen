@@ -158,6 +158,7 @@ export interface GameState {
   totalSeconds: number;
   hintsUsed: number;
   currentPuzzleId: string | null;
+  currentPuzzleHash?: string | null;
   checksUsed: Record<number, number>;
   notes: string;
   extraHints?: number;

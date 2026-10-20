@@ -211,11 +211,8 @@ const generateAndStorePuzzleOptimized = async (
     localPuzzleCache.set(cacheKey, result);
   }
   
-  if (result.solution && Array.isArray(result.solution)) {
-    storage.setJSON('current_solution', result.solution);
-  } else {
-    logMessage('warn', 'Invalid solution data, skipping storage', { solution: result.solution });
-  }
+  // Don't write current_solution here: this also runs in the background to fill the
+  // queue, and would overwrite the solution of the game being played.
   return result;
 };
 
@@ -457,6 +454,15 @@ export const getLeaderboard = async (
   }
 };
 
+// `created` holds a full timestamp, so match the whole UTC day rather than a date string
+const createdTodayFilter = (): string => {
+  const start = new Date();
+  start.setUTCHours(0, 0, 0, 0);
+  const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+  const toPb = (d: Date) => d.toISOString().replace('T', ' ');
+  return `created >= "${toPb(start)}" && created < "${toPb(end)}"`;
+};
+
 export const getDailyPuzzle = async (userId?: string, difficulty: Difficulty = 'Medium'): Promise<DailyPuzzleRecord | PuzzleResponse> => {
   const today = new Date().toISOString().split('T')[0];
 
@@ -482,8 +488,7 @@ export const getDailyPuzzle = async (userId?: string, difficulty: Difficulty = '
       }
     }
 
-    // FIXED: Add difficulty filter with proper quotes and use difficulty param
-    let filter = `created="${today}" && difficulty="${difficulty}"`;
+    let filter = `${createdTodayFilter()} && difficulty="${difficulty}"`;
 
     // Add exclusion for already played puzzles
     if (playedPuzzles.length > 0) {
@@ -511,7 +516,7 @@ export const getDailyPuzzle = async (userId?: string, difficulty: Difficulty = '
     // This prevents creating duplicate puzzles if first user already generated one
     try {
       const existingPuzzle = await pb.collection('daily_puzzles').getFirstListItem(
-        `created="${today}" && difficulty="${difficulty}"`,
+        `${createdTodayFilter()} && difficulty="${difficulty}"`,
         { requestKey: `daily-check-${today}-${difficulty}` }
       );
 

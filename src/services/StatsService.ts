@@ -197,6 +197,8 @@ const calculateCurrentStreak = async (playerId: string): Promise<number> => {
     if (dailyScores.items.length === 0) return 0;
 
     let streak = 0;
+    // A streak is still alive if the last daily was yesterday and today's isn't done yet
+    let offset = 0;
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -213,11 +215,16 @@ const calculateCurrentStreak = async (playerId: string): Promise<number> => {
       if (seenDates.has(dateKey)) continue;
       seenDates.add(dateKey);
 
-      const daysDiff = Math.floor((today.getTime() - scoreDate.getTime()) / (1000 * 60 * 60 * 24));
+      // round, not floor: days around a DST change are 23 or 25 hours long
+      const daysDiff = Math.round((today.getTime() - scoreDate.getTime()) / (1000 * 60 * 60 * 24));
 
-      if (daysDiff === streak) {
+      if (streak === 0 && daysDiff === 1) {
+        offset = 1;
+      }
+
+      if (daysDiff === streak + offset) {
         streak++;
-      } else if (daysDiff > streak) {
+      } else if (daysDiff > streak + offset) {
         break;
       }
     }
@@ -274,7 +281,7 @@ const calculateLongestStreak = async (playerId: string): Promise<number> => {
       const currentDate = new Date(uniqueDates[i]);
       const nextDate = new Date(uniqueDates[i + 1]);
 
-      const daysDiff = Math.floor((currentDate.getTime() - nextDate.getTime()) / (1000 * 60 * 60 * 24));
+      const daysDiff = Math.round((currentDate.getTime() - nextDate.getTime()) / (1000 * 60 * 60 * 24));
 
       if (daysDiff === 1) {
         currentStreak++;
